@@ -17,8 +17,8 @@ export const routes: Routes = [
     {path: 'publicar-mascota', component: PublicarMascotaComponent},
     {path: 'home-usuario', 
         component: HomeUsuarioComponent,
-        ...canActivate(() => redirectUnauthorizedTo(['/registrar-usuario']))     
-    }, //home para adoptar
+        ...canActivate(() => redirectUnauthorizedTo(['/login']))     
+    }, //home para adoptar (necesitas estar logueado)
     {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
 
     {path: '', redirectTo: '/home', pathMatch: 'full'},
