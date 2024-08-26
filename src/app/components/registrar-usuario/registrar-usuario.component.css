@@ -1,0 +1,95 @@
+img {
+    width: 100%;
+}
+
+.banner {
+    height: 20%;
+
+    background-image: url("../../../assets/login.png");
+    background-size: cover;
+
+}
+
+.login{
+    padding: 24px;
+    padding-top: 40px;
+}
+
+h2 {
+    color: var(--Black, #222);
+    leading-trim: both;
+    text-edge: cap;
+
+    /* Hero/H2 */
+    font-family: "Space Grotesk";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+input{
+    height: 56px;
+    border-radius: 48px !important;
+    border: 2px solid var(--Black, #222);
+    background: var(--White, #F1F1F1);
+}
+
+.iniciar-sesion{
+        margin-top: 24px;
+        height: 55px;
+        width: 100%;
+
+        border-radius: 48px;
+        background: var(--CTA, #E5A700);
+        
+        /* shadow buttons */
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), -12px 28px 8px 0px rgba(0, 0, 0, 0.00), -8px 18px 8px 0px rgba(0, 0, 0, 0.03), -4px 10px 7px 0px rgba(0, 0, 0, 0.10), -2px 4px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
+h5{
+    color: var(--Black, #222);
+
+    /* cuerpos y textos pequeños/Cuerpos normales */
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.registrar a{
+    color: var(--Blue, #3A86FF);
+
+    /* cuerpos y textos pequeños/Cuerpos subrayados */
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.registrar-google{
+    padding: 24px;
+    margin-top: 32px;
+    color: var(--grey, #A1A1A1);
+    text-align: center;
+
+    /* Buttons/Botones grandes */
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.registrar-google button{
+    border-radius: 44.25px;
+    border: 0.375px solid var(--grey, #A1A1A1);
+    background: var(--White, #F1F1F1);
+    padding: 12px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+}

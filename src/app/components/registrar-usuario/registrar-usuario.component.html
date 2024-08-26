@@ -1,3 +1,4 @@
+
 <div class="container-sm p-0 vh-100">
     
     <div class="banner bg-info p-24">
@@ -5,22 +6,30 @@
     </div>
 
     <div class="login">
-        <h2>Iniciar sesión</h2>
+        <h2>Crear cuenta</h2>
 
+        <div class="mb-3">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre completo">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="ubicacion" placeholder="Ubicación">
+        </div>
         <div class="mb-3">
             <input type="email" class="form-control" id="email" placeholder="Email">
         </div>
         <div class="mb-3">
             <input type="password" class="form-control" id="password" placeholder="Contraseña">
+        </div><div class="mb-3">
+            <input type="password" class="form-control" id="passwordRepeated" placeholder="Repetir contraseña">
         </div>
 
         <div class="mb-3">
-            <button type="submit" class=" btn iniciar-sesion" routerLink="/home">Iniciar sesión</button>
+            <button type="submit" class=" btn iniciar-sesion" routerLink="/home">Registrarse</button>
         </div>
 
         <div class="registrar d-flex justify-content-center gap-3">
-            <h5>¿No tienes cuenta?</h5>
-            <a routerLink="/registrar-usuario">Registrarse</a>
+            <h5>Ya tengo una cuenta</h5>
+            <a routerLink="/login">Iniciar sesión</a>
         </div>
 
         <div class="registrar-google">
