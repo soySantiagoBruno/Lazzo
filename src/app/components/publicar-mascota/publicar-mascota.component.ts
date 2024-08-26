@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FooterDarkComponent } from "../footer-dark/footer-dark.component";
-import { NavbarUsuarioComponent } from "../navbar-usuario/navbar-usuario.component";
+import { FooterDarkComponent } from "../footers/footer-dark/footer-dark.component";
+import { NavbarUsuarioComponent } from "../navbars/navbar-usuario/navbar-usuario.component";
 
 @Component({
   selector: 'app-publicar-mascota',

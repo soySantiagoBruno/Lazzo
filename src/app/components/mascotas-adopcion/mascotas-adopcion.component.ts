@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavbarUsuarioComponent } from "../navbar-usuario/navbar-usuario.component";
+import { NavbarUsuarioComponent } from "../navbars/navbar-usuario/navbar-usuario.component";
 
 @Component({
     selector: 'app-mascotas-adopcion',

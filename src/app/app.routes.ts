@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { SaberMasComponent } from './saber-mas/saber-mas.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PublicarMascotaComponent } from './publicar-mascota/publicar-mascota.component';
-import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { SaberMasComponent } from './components/saber-mas/saber-mas.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PublicarMascotaComponent } from './components/publicar-mascota/publicar-mascota.component';
+import { HomeUsuarioComponent } from './components/home-usuario/home-usuario.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},

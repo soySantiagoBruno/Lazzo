@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoMascotaComponent } from "../info-mascota/info-mascota.component";
+import { InfoMascotaComponent } from "../../info-mascota/info-mascota.component";
 import { NgIf, NgStyle } from '@angular/common';
-import { SwitchService } from '../services/switch.service';
-import { CartaComponent } from "../carta/carta.component";
+import { SwitchService } from '../../../services/switch.service';
+import { CartaComponent } from "../../carta/carta.component";
 
 @Component({
     selector: 'app-carrusel',

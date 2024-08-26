@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartaComponent } from "../carta/carta.component";
+import { CartaComponent } from "../../carta/carta.component";
 
 @Component({
     selector: 'app-carrusel-gatos',

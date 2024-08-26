@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchService } from '../services/switch.service';
+import { SwitchService } from '../../services/switch.service';
 import { NgIf, NgStyle } from '@angular/common';
 
 @Component({

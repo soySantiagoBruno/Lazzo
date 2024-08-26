@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "./navbar/navbar.component";
-import { HomeComponent } from "./home/home.component";
-import { FooterComponent } from "./footer/footer.component";
-import { InfoMascotaComponent } from "./info-mascota/info-mascota.component";
-import { HomeUsuarioComponent } from "./home-usuario/home-usuario.component";
-import { SaberMasComponent } from "./saber-mas/saber-mas.component";
-import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from "./components/navbars/navbar/navbar.component";
+import { HomeComponent } from "./components/home/home.component";
+import { FooterComponent } from "./components/footers/footer/footer.component";
+import { InfoMascotaComponent } from "./components/info-mascota/info-mascota.component";
+import { HomeUsuarioComponent } from "./components/home-usuario/home-usuario.component";
+
+import { LoginComponent } from './components/login/login.component';
+import { SaberMasComponent } from './components/saber-mas/saber-mas.component';
 
 @Component({
     selector: 'app-root',
