@@ -6,13 +6,19 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PublicarMascotaComponent } from './components/publicar-mascota/publicar-mascota.component';
 import { HomeUsuarioComponent } from './components/home-usuario/home-usuario.component';
 import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
+
     {path: 'home', component: HomeComponent},
+
     {path: 'saber-mas', component: SaberMasComponent},
     {path: 'publicar-mascota', component: PublicarMascotaComponent},
-    {path: 'home-usuario', component: HomeUsuarioComponent}, //home para adoptar
+    {path: 'home-usuario', 
+        component: HomeUsuarioComponent,
+        ...canActivate(() => redirectUnauthorizedTo(['/registrar-usuario']))     
+    }, //home para adoptar
     {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
 
     {path: '', redirectTo: '/home', pathMatch: 'full'},

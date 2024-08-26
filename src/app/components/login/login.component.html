@@ -7,21 +7,24 @@
     <div class="login">
         <h2>Iniciar sesión</h2>
 
-        <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Email">
-        </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Contraseña">
-        </div>
+        <form [formGroup]="formularioLogin" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <input formControlName="email" type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <input formControlName="password" type="password" class="form-control" placeholder="Contraseña">
+            </div>
 
-        <div class="mb-3">
-            <button type="submit" class=" btn iniciar-sesion" routerLink="/home">Iniciar sesión</button>
-        </div>
+            <div class="mb-3">
+                <button type="submit" class=" btn iniciar-sesion">Iniciar sesión</button>
+            </div>
 
-        <div class="registrar d-flex justify-content-center gap-3">
-            <h5>¿No tienes cuenta?</h5>
-            <a routerLink="/registrar-usuario">Registrarse</a>
-        </div>
+            <div class="registrar d-flex justify-content-center gap-3">
+                <h5>¿No tienes cuenta?</h5>
+                <a routerLink="/registrar-usuario">Registrarse</a>
+            </div>
+        </form>
+
 
         <div class="registrar-google">
             <p>Iniciar sesión con Google</p>

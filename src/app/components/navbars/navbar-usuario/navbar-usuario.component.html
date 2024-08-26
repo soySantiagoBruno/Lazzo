@@ -8,10 +8,22 @@
 
         <span class="ubicacion"><img src="assets/location-empty.svg" alt=""> Chubut, AR</span>
 
-        <a class="navbar-brand" href="#">
+        <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <img src="assets/perfil.png" alt="Logo" height="63">
         </a>
 
     </div>
 
+</div>
+<button (click)="cerrarSesion()"  type="button" class="btn btn-danger">Cerrar Sesión</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button (click)="cerrarSesion()"  type="button" class="btn btn-danger">Cerrar Sesión</button>
+        </div>
+    </div>
 </div>
