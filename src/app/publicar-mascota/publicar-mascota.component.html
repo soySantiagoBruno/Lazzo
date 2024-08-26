@@ -1,0 +1,127 @@
+<app-navbar-usuario></app-navbar-usuario>
+
+<div class="contenedor-principal">
+
+    <!--Inicio-->
+    <div class="container">
+        <h1>En <span style="color:#4B88A2">Lazzo</span> un amigo espera</h1>
+    
+        <h4>Aquí podrás publicar las mascotas que quieras dar en adopción</h4>
+    </div>
+    
+    <!--Formulario-->
+    <h3>Datos de la mascota</h3>
+    <h4 style="font-weight: bolder;text-align: left;" class="font-weight-bold">¿Qué deseas publicar?</h4>
+
+
+    <div class="filtro">
+        <form action="">
+            <!--Tipo-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Tipo</label>
+                <div class="d-flex gap-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                        Perro
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                        Gato
+                        </label>
+                    </div>
+                </div>
+        
+            </div>
+
+            <!--Nombre-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingre el nombre">
+            </div>
+            
+            <!--Sexo-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Sexo</label>
+                <div class="d-flex gap-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Macho <i class="material-icons">male</i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Hembra <i class="material-icons">female</i>
+                        </label>
+                    </div>
+                </div>
+        
+            </div>
+        
+            <!--Tamaño-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Tamaño</label>
+        
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                    <option selected></option>
+                    <option value="1">Chico</option>
+                    <option value="2">Mediano</option>
+                    <option value="3">Grande</option>
+                </select>
+            </div>
+        
+            <!--Edad-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Edad</label>
+        
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                    <option selected></option>
+                    <option value="1">Cachorros</option>
+                    <option value="2">Jovenes (2-4 años)</option>
+                    <option value="3">Adultos (5-9 años)</option>
+                    <option value="4">Viejitos (+10 años)</option>
+                </select>
+        
+            </div>
+
+                    
+            <!--Ubicación-->
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Ubicación</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Selecciona tu ubicación">
+            </div>
+            
+            <!--Descripción-->
+            <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese una breve descripción..." style="border-radius: 16px !important;"></textarea>
+            
+            <!--Subir foto-->
+            <input type="file" id="input-file-now" class="file-upload-input mb-3" data-mdb-file-upload-init="" accept="" autocompleted="">
+
+            <!--Politicas-->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  <p class="politicas">Conozco y acepto las <a href="">políticas y buenas practicas de adopción de Lazzo.</a></p>
+                </label>
+            </div>
+
+            <!--Botones-->
+            <div class="mb-3">
+                <button type="submit" class=" btn iniciar-sesion" routerLink="/mascotas">Publicar</button>
+            </div>
+            
+            <div class="boton-filtro d-flex">
+                <i class="material-icons">close</i>
+                <button class="boton-filtro">Volver</button>
+            </div>
+        </form>
+        </div>
+
+
+</div>
+
+<app-footer-dark/>
