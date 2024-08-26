@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,5 +15,5 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled'
       })
-    ), provideClientHydration(), provideFirebaseApp(() => initializeApp({"projectId":"lazzo-ddb6b","appId":"1:138962683932:web:02f1fafe85f7f8696b37d9","storageBucket":"lazzo-ddb6b.appspot.com","apiKey":"AIzaSyBwqQ5CgK5UgAAB1RgpjSNZ3FW9q1GRekI","authDomain":"lazzo-ddb6b.firebaseapp.com","messagingSenderId":"138962683932","measurementId":"G-NE2JH2HTLF"})), provideFirestore(() => getFirestore())]
+    ), provideClientHydration(), provideFirebaseApp(() => initializeApp({"projectId":"lazzo-ddb6b","appId":"1:138962683932:web:02f1fafe85f7f8696b37d9","storageBucket":"lazzo-ddb6b.appspot.com","apiKey":"AIzaSyBwqQ5CgK5UgAAB1RgpjSNZ3FW9q1GRekI","authDomain":"lazzo-ddb6b.firebaseapp.com","messagingSenderId":"138962683932","measurementId":"G-NE2JH2HTLF"})), provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({"projectId":"lazzo-ddb6b","appId":"1:138962683932:web:02f1fafe85f7f8696b37d9","storageBucket":"lazzo-ddb6b.appspot.com","apiKey":"AIzaSyBwqQ5CgK5UgAAB1RgpjSNZ3FW9q1GRekI","authDomain":"lazzo-ddb6b.firebaseapp.com","messagingSenderId":"138962683932","measurementId":"G-NE2JH2HTLF"})), provideAuth(() => getAuth())]
 };
