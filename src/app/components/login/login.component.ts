@@ -30,11 +30,18 @@ export class LoginComponent {
     .then(response => {
       // En caso de que el registro sea exitoso, redirije al login      
       this.router.navigate(["/home-usuario"])
-      
-      // Acá irá el servicio con Firebase Storage que agregará los campos que quedan de UsuarioRegisterDto
-      
+    
     })
     .catch(error => console.log(error))
+  }
+
+  loginWithGoogle(){
+    this.userService.loginWithGoogle()
+    .then(response => {
+      // En caso de que el registro sea exitoso, redirije al login      
+      this.router.navigate(["/home-usuario"])
+    })
+      
   }
 
   

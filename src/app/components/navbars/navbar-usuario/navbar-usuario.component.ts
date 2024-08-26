@@ -21,7 +21,6 @@ export class NavbarUsuarioComponent {
     this.userService.logout()
     .then((response) => {
       this.router.navigate(['/home']);
-      console.log("adiooooo");
     })
     .catch(error => console.log(error))
   }
