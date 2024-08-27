@@ -35,6 +35,13 @@ input{
     background: var(--White, #F1F1F1);
 }
 
+.input-whatsapp{
+    height: 56px;
+    border-radius: 48px !important;
+    border: 2px solid var(--Black, #222);
+    background: var(--White, #F1F1F1);
+}
+
 .iniciar-sesion{
         margin-top: 24px;
         height: 55px;

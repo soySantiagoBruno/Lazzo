@@ -1,5 +1,6 @@
 export interface UsuarioRegisterDto {
     nombreCompleto: String;
+    celular: Number;
     ubicacion: String;
-    telefono: Number;
+    tieneWhatsapp: boolean;
 }
