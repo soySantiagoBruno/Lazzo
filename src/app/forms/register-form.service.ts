@@ -16,8 +16,8 @@ export class RegisterFormService {
         Validators.pattern('^[0-9]{10}$'), // validación para un número de 10 dígitos
       ] ),
       provincia: new FormControl('', [Validators.required]),
-      ciudad: new FormControl('', [Validators.required]),
-      tieneWhatsapp: new FormControl(false, [Validators.required]),
+      municipio: new FormControl('', [Validators.required]),
+      tieneWhatsapp: new FormControl('', [Validators.required]),
 
     });
   }

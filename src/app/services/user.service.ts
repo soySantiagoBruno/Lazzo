@@ -23,7 +23,8 @@ export class UserService {
           nombreCompleto: usuario.nombreCompleto,
           celular: usuario.celular,
           email: usuario.email,
-          ubicacion: usuario.ubicacion,
+          provincia: usuario.provincia,
+          municipio: usuario.municipio,
           tieneWhatsapp: usuario.tieneWhatsapp,
           mascotasEnAdopcion: usuario.mascotasEnAdopcion || [] // Si no se especifican mascotas, guardar un array vacío
         });
@@ -44,11 +45,6 @@ export class UserService {
 
   logout(){
     return signOut(this.auth);
-  }
-
-  registrarUsuario(usuario: UsuarioRegisterDto){
-    const userRef = collection(this.firestore, 'usuarios');
-    return addDoc(userRef, usuario);
   }
 
 }

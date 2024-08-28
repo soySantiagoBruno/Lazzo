@@ -8,7 +8,7 @@ export interface UsuarioRegisterDto {
     celular: Number;
     email: string;
     provincia: string;
-    ciudad: string;
+    municipio: string;
     tieneWhatsapp: boolean;
 
     password: string;

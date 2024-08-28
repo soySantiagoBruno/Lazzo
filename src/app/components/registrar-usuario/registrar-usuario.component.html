@@ -16,22 +16,42 @@
             <div class="input-group mb-3">
                 <input formControlName="celular" type="number" class="form-control" placeholder="Celular +54 9 2604030345">
                 
-                <select placeholed="tenes whatsapp?"
-                formControlName="tieneWhatsapp"
+                <select formControlName="tieneWhatsapp"
                 class="dropdown-toggle ms-1 input-whatsapp" name="whatsapp" required>
-                    <option class="dropdown-item" value="" > ¿Tenés Whatsapp?</option>
-                    <option class="dropdown-item" value="true">Si, tengo Whatsapp</option>
-                    <option class="dropdown-item" value="false">No tengo Whatsapp</option>
+                <option class="dropdown-item" value="" disabled selected> ¿Tenés Whatsapp?</option>
+                <option class="dropdown-item" value="true">Si, tengo Whatsapp</option>
+                <option class="dropdown-item" value="false">No tengo Whatsapp</option>
                 </select>
             </div>
 
-            <input formControlName="email" type="email" class="form-control" placeholder="Email">
-            <div 
-                class="mb-3">
-            </div>
             <div class="mb-3">
-                <input formControlName="ubicacion" type="text" class="form-control" placeholder="Ubicación">
+            <input formControlName="email" type="email" class="form-control" placeholder="Email">
             </div>
+
+            <div class="mb-3">
+              
+                <!--Provincia-->
+                <select formControlName="provincia" class="dropdown-toggle input-whatsapp w-100">
+                    <option class="dropdown-item" value="" disabled selected>Provincia</option>
+                    <option class="dropdown-item" *ngFor="let provincia of provincias" [ngValue]="provincia">{{provincia}}</option>
+                </select>
+ 
+            </div>
+            
+            <div class="mb-3" *ngIf="tocado">
+                <!--Municipio-->
+                <select 
+                formControlName="municipio" 
+                class="dropdown-toggle ms-1 input-whatsapp w-100"
+                
+                >
+                    <option class="dropdown-item" value="" disabled selected>Municipio</option>
+    
+                    <option class="dropdown-item" *ngFor="let municipio of municipios" [ngValue]="municipio">{{municipio}}</option>
+                </select>
+            </div>
+
+
             <div class="mb-3">
                 <input formControlName="password" type="password" class="form-control" placeholder="Contraseña (al menos 8 caracteres)">
             </div><div class="mb-3">

@@ -8,18 +8,18 @@ import { map, Observable } from 'rxjs';
 export class UbicacionApiService {
 
   private provinciasUrl = 'https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre';
-  private municipiosUrl = 'https://apis.datos.gob.ar/georef/api/municipios?campos=nombre&provincia=mendoza';
+  private municipiosUrl = 'https://apis.datos.gob.ar/georef/api/municipios?campos=nombre&provincia=';
 
 
   constructor(private http: HttpClient) { }
 
-  getProvincias(): Observable<any> {
+  getProvincias(): Observable<string[]> {
     return this.http
       .get(this.provinciasUrl)
       .pipe(
         map((data: any) => {
 
-          let provincias: any[] = [];
+          let provincias: string[] = [];
           for (let index = 0; index < data.provincias.length; index++) {
             provincias.push(data.provincias[index].nombre);   
           }
@@ -30,15 +30,15 @@ export class UbicacionApiService {
   }
 
 
-  getMunicipios(): Observable<any>{
+  getMunicipios(provincia: string): Observable<any>{
     return this.http
-    .get(this.municipiosUrl)
+    .get(`${this.municipiosUrl}${provincia}`)
     .pipe(
       map((data:any) =>{
         
         let municipios: any[] = [];
         for (let index = 0; index < data.municipios.length; index++) {
-          municipios.push(data.municipios[index]);
+          municipios.push(data.municipios[index].nombre);
         }
         return municipios;
       }
