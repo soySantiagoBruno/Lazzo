@@ -26,7 +26,14 @@ export class RegistrarUsuarioComponent {
   }
 
   onSubmit(){
-    this.userService.register(this.formularioRegister.value) // Le pasamos los VALORES del formulario necesarios para el registro
+    // Convertir el valor de "tieneWhatsapp" a booleano (true o false)
+    if (this.formularioRegister.value.tieneWhatsapp === "true") {
+      this.formularioRegister.value.tieneWhatsapp = true; 
+    } else{
+      this.formularioRegister.value.tieneWhatsapp = false; 
+    }
+
+    this.userService.registerUsuario(this.formularioRegister.value) // Le pasamos los VALORES del formulario necesarios para el registro
     .then(response => {
       // En caso de que el registro sea exitoso, redirije al login
       this.router.navigate(["/login"])
@@ -37,4 +44,6 @@ export class RegistrarUsuarioComponent {
     .catch(error => console.log(error))
   }
 
+
+  
 }
