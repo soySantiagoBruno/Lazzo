@@ -3,6 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { LoginFormService } from '../../forms/login-form.service';
+import { UsuarioRegisterGoogleDto } from '../../models/usuario-register-google-dto';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class LoginComponent {
     this.userService.loginWithGoogle()
     .then(response => {
       // En caso de que el registro sea exitoso, redirije al login      
-      this.router.navigate(["/home-usuario"])
+      //this.router.navigate(["/home-usuario"])
     })
       
   }

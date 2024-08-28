@@ -1,0 +1,60 @@
+
+<div class="container-sm p-0 vh-100">
+    
+    <div class="banner bg-info p-24">
+        
+    </div>
+
+    <div class="login">
+        <h2>¡Ya casi! Solo algunos datos más...</h2>
+        <form [formGroup]="formularioRegisterGoogle" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3">
+                <input formControlName="nombreCompleto" type="text" class="form-control" placeholder="Nombre completo">
+            </div>
+
+            <div class="input-group mb-3">
+                <input formControlName="celular" type="number" class="form-control" placeholder="Celular +54 9 2604030345">
+                
+                <select formControlName="tieneWhatsapp"
+                class="dropdown-toggle ms-1 input-whatsapp" name="whatsapp" required>
+                <option class="dropdown-item" value="" disabled selected> ¿Tenés Whatsapp?</option>
+                <option class="dropdown-item" value="true">Si, tengo Whatsapp</option>
+                <option class="dropdown-item" value="false">No tengo Whatsapp</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+              
+                <!--Provincia-->
+                <select formControlName="provincia" class="dropdown-toggle input-whatsapp w-100">
+                    <option class="dropdown-item" value="" disabled selected>Provincia</option>
+                    <option class="dropdown-item" *ngFor="let provincia of provincias" [ngValue]="provincia">{{provincia}}</option>
+                </select>
+ 
+            </div>
+            
+            <div class="mb-3" *ngIf="tocado">
+                <!--Municipio-->
+                <select 
+                formControlName="municipio" 
+                class="dropdown-toggle ms-1 input-whatsapp w-100"
+                
+                >
+                    <option class="dropdown-item" value="" disabled selected>Municipio</option>
+    
+                    <option class="dropdown-item" *ngFor="let municipio of municipios" [ngValue]="municipio">{{municipio}}</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <button type="submit" class=" btn iniciar-sesion">Registrarse</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
