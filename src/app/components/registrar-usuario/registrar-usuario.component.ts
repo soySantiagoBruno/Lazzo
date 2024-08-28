@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RegisterFormService } from '../../forms/register-form.service';
+import { UbicacionApiService } from '../../services/ubicacion-api.service';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -11,7 +12,7 @@ import { RegisterFormService } from '../../forms/register-form.service';
   templateUrl: './registrar-usuario.component.html',
   styleUrl: './registrar-usuario.component.css'
 })
-export class RegistrarUsuarioComponent {
+export class RegistrarUsuarioComponent{
 
   formularioRegister: FormGroup;
 
@@ -19,9 +20,10 @@ export class RegistrarUsuarioComponent {
   constructor(
     private registerFormService: RegisterFormService, 
     private userService: UserService, 
-    private router: Router
+    private router: Router,
+    private ubicacionApiService: UbicacionApiService,
   ){
-    // Creo el formulario a usar para el login
+    // Creo el formulario a usar para el registro
     this.formularioRegister = registerFormService.createRegisterForm();
   }
 
@@ -44,6 +46,15 @@ export class RegistrarUsuarioComponent {
     .catch(error => console.log(error))
   }
 
+  mostrarProvincias(){
+    this.ubicacionApiService.getProvincias().subscribe((data: any) => console.log(data)
+    )
+  }
 
-  
+
+  mostrarMunicipios(){
+    this.ubicacionApiService.getMunicipios().subscribe(data => console.log(data)
+    )
+  }
+
 }
