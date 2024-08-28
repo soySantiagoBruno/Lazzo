@@ -5,7 +5,6 @@ export interface MascotaRegisterDto {
     sexo: string;
     tamanio: string;
     edad: string;
-    ubicacion: string;
     descripcion: string;
     imagen?: string;
 
