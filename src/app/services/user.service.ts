@@ -4,6 +4,7 @@ import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { UsuarioRegisterDto } from '../models/usuario-register-dto';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioRegisterGoogleDto } from '../models/usuario-register-google-dto';
+import { UsuarioLogin } from '../models/usuario-login';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class UserService {
       });
   }
 
-  login({email, password}: any){
+  login({email, password}: UsuarioLogin){
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
