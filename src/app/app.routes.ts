@@ -6,23 +6,45 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PublicarMascotaComponent } from './components/publicar-mascota/publicar-mascota.component';
 import { HomeUsuarioComponent } from './components/home-usuario/home-usuario.component';
 import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
-import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AuthGuard, canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RegistrarUsuarioGoogleComponent } from './components/registrar-usuario-google/registrar-usuario-google.component';
 
+
+// Tuberías para redirigir
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHomeUsuario = () => redirectLoggedInTo(['home-usuario']);
+
 export const routes: Routes = [
-    {path: 'login', component: LoginComponent},
-
+    
+    // Secciones públicas
     {path: 'home', component: HomeComponent},
-
     {path: 'saber-mas', component: SaberMasComponent},
-    {path: 'publicar-mascota', component: PublicarMascotaComponent},
-    {path: 'home-usuario', 
-        component: HomeUsuarioComponent,
-        ...canActivate(() => redirectUnauthorizedTo(['/login']))     
-    }, //home para adoptar (necesitas estar logueado)
+    
+    // Secciones de logueo y registro
+    {path: 'login', 
+        component: LoginComponent,
+        // Si ya estas logueado, mandalo al home-usuario
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectLoggedInToHomeUsuario },
+    },
     {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
     {path: 'registrar-usuario-google', component: RegistrarUsuarioGoogleComponent},
-
+    
+    // Secciones protegidas
+    {path: 'home-usuario', 
+        component: HomeUsuarioComponent,
+        canActivate:[AuthGuard],
+        // Usamos la tubería para redirigir
+        data: { authGuardPipe: redirectUnauthorizedToLogin },
+    }, //home para adoptar (necesitas estar logueado)
+    {
+        path: 'publicar-mascota',
+        component: PublicarMascotaComponent,
+        canActivate:[AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin },
+    },
+    
+    // Redirecciones y página 404
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     { path: '**', component: PageNotFoundComponent }
 ];
