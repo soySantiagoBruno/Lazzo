@@ -49,13 +49,11 @@ export class RegistrarUsuarioGoogleComponent {
     
     // ACA USAR NUEVO METODO registerUsuarioGoogle
     this.userService.registerUsuarioGoogle(this.formularioRegisterGoogle.value) // Le pasamos los VALORES del formulario necesarios para el registro
-    .then(response => {
-      console.log(`valores formularioRegisterGoogle ${this.formularioRegisterGoogle.value}`);
-      
+    .then(response => {      
       // En caso de que el registro sea exitoso, redirije al login
       this.router.navigate(["/login"])
       
-      // Acá irá el servicio con Firebase Storage que agregará los campos que quedan de UsuarioRegisterDto
+      // Acá irá el servicio con Firebase Storage que agregará los campos que quedan de UsuarioRegisterDto o no? BORRAR este comentario si no jaja
       
     })
     .catch(error => console.log(error))
