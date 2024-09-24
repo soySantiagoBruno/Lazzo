@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private auth: Auth, private firestore: Firestore, private router: Router) { }
 
-  // Registrar usando authentication y storage (pide todos los datos de una)
+  // Registrar usando authentication y storage (clásico) (pide todos los datos de una)
   registerUsuario(usuario: UsuarioRegisterDto) {
     const userRef = collection(this.firestore, 'usuarios');
     
@@ -54,10 +54,9 @@ export class UserService {
       // Una vez logueados con Google, SI NO estamos registrados nos vamos al registro-usuario-google
       //Primero guardamos las credenciales en una variable para ser usado por registerUsuarioGoogle()
       this.userCredential = userCredential;
-      console.log(userCredential);
+      //console.log(userCredential);
       
       this.router.navigate(['/registrar-usuario-google']);
-      console.log("Esto ocurre despues de signInWithPopup");
 
       /* // Agregar los datos adicionales a Firestore a la colección "usuarios"
       return addDoc(userRef, {
@@ -88,8 +87,8 @@ export class UserService {
     // Crear el usuario en Firebase Authentication usando Google
     // NO NECESITAMOS agregarlo al Authentication solo al Firebase Database
     // Agregar los datos adicionales a Firestore a la colección "usuarios"
-    console.log(`uid cargado con el popup ${this.userCredential.user.uid}`);
-    console.log(`email cargado con el popup ${this.userCredential.user.email}`);
+    //console.log(`uid cargado con el popup ${this.userCredential.user.uid}`);
+    //console.log(`email cargado con el popup ${this.userCredential.user.email}`);
     
     return addDoc(userRef, {
       // Datos traidos del Popup de Google
