@@ -13,6 +13,9 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './registrar-usuario-google.component.html',
   styleUrl: './registrar-usuario-google.component.css'
 })
+
+/* Esto sirve para terminar de completar el registro de un usuario que se loguea mediante Google, esto debido a que además de un correo (que nos proporciona Google), también necesitamos otros datos como nombre, celular, provincia y municipio.
+ */
 export class RegistrarUsuarioGoogleComponent {
 
   // Esto será usado en el dropdown de ubicación
@@ -39,7 +42,7 @@ export class RegistrarUsuarioGoogleComponent {
   }
 
   onSubmit(){
-    // Convertir el valor de "tieneWhatsapp" a booleano (true o false)
+    // Convertir el valor de "tieneWhatsapp" a booleano (true o false) para ser cargado en el sistema
     if (this.formularioRegisterGoogle.value.tieneWhatsapp === "true") {
       this.formularioRegisterGoogle.value.tieneWhatsapp = true; 
     } else if(this.formularioRegisterGoogle.value.tieneWhatsapp === "false"){
@@ -47,15 +50,12 @@ export class RegistrarUsuarioGoogleComponent {
     }
 
     
-    // ACA USAR NUEVO METODO registerUsuarioGoogle
     this.userService.registerUsuarioGoogle(this.formularioRegisterGoogle.value) // Le pasamos los VALORES del formulario necesarios para el registro
     .then(response => {      
-      // En caso de que el registro sea exitoso, redirije al login
-      this.router.navigate(["/login"])
-      
-      // Acá irá el servicio con Firebase Storage que agregará los campos que quedan de UsuarioRegisterDto o no? BORRAR este comentario si no jaja
-      
+      // En caso de que el registro sea exitoso, redirije al /home-usuario
+      this.router.navigate(["/home-usuario"])
     })
+
     .catch(error => console.log(error))
   }
 
