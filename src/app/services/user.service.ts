@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, user } from '@angular/fire/auth';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
 import { UsuarioRegisterDto } from '../models/usuario-register-dto';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioRegisterGoogleDto } from '../models/usuario-register-google-dto';
@@ -49,32 +49,32 @@ export class UserService {
 
     // Popup Google
     return signInWithPopup(this.auth, new GoogleAuthProvider())
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       
-      // Una vez logueados con Google, SI NO estamos registrados nos vamos al registro-usuario-google
-      //Primero guardamos las credenciales en una variable para ser usado por registerUsuarioGoogle()
-      this.userCredential = userCredential;
-      //console.log(userCredential);
+      // Una vez logueados con Google, SI NO estamos registrados en la colección "usuarios" nos vamos al registro-usuario-google
+      const uidUserActual = this.auth.currentUser?.uid;
       
-      this.router.navigate(['/registrar-usuario-google']);
+      // Realizar la consulta en Firestore
+      const q = query(collection(this.firestore, 'usuarios'), where("uid", "==", uidUserActual));
+      const querySnapshot = await getDocs(q);
 
-      /* // Agregar los datos adicionales a Firestore a la colección "usuarios"
-      return addDoc(userRef, {
-        uid: userCredential.user.uid, // Asociar los datos al UID del usuario
-        nombreCompleto: usuario.nombreCompleto,
-        celular: usuario.celular,    
-        provincia: usuario.provincia,
-        municipio: usuario.municipio,
-        tieneWhatsapp: usuario.tieneWhatsapp,
-        mascotasEnAdopcion: usuario.mascotasEnAdopcion || [] // Si no se especifican mascotas, guardar un array vacío 
-      });*/
+      // Verificar si el documento existe en Firestore
+      if (!querySnapshot.empty) {
+          console.log("El usuario existe en la colección 'usuarios'");
+          this.router.navigate(['/home-usuario']);
+          
+      } else {
+          console.log("El usuario no está registrado en la colección 'usuarios'");
+          // Procedemos a mandarlo al formulario de registrar-usuario-google
+          //Primero guardamos las credenciales en una variable para ser usado por registerUsuarioGoogle()
+          this.userCredential = userCredential;
+          
+          this.router.navigate(['/registrar-usuario-google']);
+          
+      }
+
+    
     })
-
-
-    /* .catch((error) => {
-      console.error("Error al registrar el usuario:", error);
-      throw error; // Propagar el error para que pueda ser manejado por quien llama a esta función
-    }); */
   }
 
 
