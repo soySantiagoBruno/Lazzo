@@ -1,31 +1,43 @@
 import { inject } from "@angular/core";
-import { Auth } from "@angular/fire/auth";
+import { Auth, onAuthStateChanged } from "@angular/fire/auth";
 import { collection, Firestore, getDocs, query, where } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 
-export const LoginGuard = async () => {
+export const LoginGuard = () => {
   const authService = inject(Auth);
   const firestore = inject(Firestore);
   const router = inject(Router);
 
-  // Obtener el uid del usuario actual
-  const uidUserActual = authService.currentUser?.uid;
+  return new Promise<boolean>((resolve) => {
+    // Usar onAuthStateChanged para esperar el estado de autenticación
+    const unsubscribe = onAuthStateChanged(authService, async (user) => {
+      if (!user) {
+        // No hay usuario autenticado
+        console.log("No se encontró un usuario autenticado");
+        unsubscribe(); // Desuscribir para evitar múltiples llamadas
+        return resolve(true); // Permitir acceso a la ruta de login
+      }
 
-  // Si el usuario no está logueado, permitimos que acceda al login
-  if (!uidUserActual) {
-    return true; // Permitir acceso al login
-  }
+      // Usuario autenticado, obtener el UID
+      const uidUserActual = user.uid;
+      console.log("uiduseractual: ", uidUserActual);
 
-  // Realizar la consulta en Firestore
-  const q = query(collection(firestore, 'usuarios'), where("uid", "==", uidUserActual));
-  const querySnapshot = await getDocs(q);
+      // Realizar la consulta en Firestore
+      const q = query(collection(firestore, 'usuarios'), where("uid", "==", uidUserActual));
+      const querySnapshot = await getDocs(q);
 
-  // Si el usuario ya está registrado en Firestore, redirigir a home-usuario
-  if (!querySnapshot.empty) {
-    router.navigate(['/home-usuario']); // Redirigir si el usuario ya está registrado
-    return false; // No permitir acceso al login
-  }
-
-  // Si no está registrado en Firestore, permitimos que acceda al login
-  return true; // Permitir acceso al login
+      // Si el usuario está registrado en 'usuarios', redirigir a home-usuario
+      if (!querySnapshot.empty) {
+        console.log("El usuario ya está registrado en Firestore");
+        router.navigate(['/home-usuario']);
+        unsubscribe(); // Desuscribir para evitar múltiples llamadas
+        return resolve(false); // No permitir acceso a la ruta de login
+      } else {
+        // El usuario no está registrado, permitir acceso al login
+        console.log("El usuario no está registrado en la colección 'usuarios'");
+        unsubscribe(); // Desuscribir para evitar múltiples llamadas
+        return resolve(true); // Permitir acceso a la ruta de login
+      }
+    });
+  });
 };

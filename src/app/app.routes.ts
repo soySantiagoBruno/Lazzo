@@ -12,9 +12,6 @@ import { MyGuard } from './guards/my-guard';
 import { LoginGuard } from './guards/login-guard';
 
 
-// Tuberías para redirigir
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToHomeUsuario = () => redirectLoggedInTo(['home-usuario']);
 
 export const routes: Routes = [
     
@@ -26,8 +23,7 @@ export const routes: Routes = [
     {path: 'login', 
         component: LoginComponent,
         // Si ya estas logueado, mandalo al home-usuario
-        //canActivate: [LoginGuard], //SEGUIR DESARROLLANDO ESTO
-        //data: { authGuardPipe: redirectLoggedInToHomeUsuario },
+        canActivate: [LoginGuard],
     },
     {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
     {path: 'registrar-usuario-google', component: RegistrarUsuarioGoogleComponent},
@@ -41,7 +37,6 @@ export const routes: Routes = [
         path: 'publicar-mascota',
         component: PublicarMascotaComponent,
         canActivate:[MyGuard],
-        data: { authGuardPipe: redirectUnauthorizedToLogin },
     },
     
     // Redirecciones y página 404
