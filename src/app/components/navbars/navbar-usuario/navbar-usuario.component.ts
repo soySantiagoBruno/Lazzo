@@ -12,10 +12,15 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavbarUsuarioComponent {
 
+  
+
   constructor(
     private userService: UserService, 
     private router: Router
   ){}
+
+
+
 
   cerrarSesion(){
     this.userService.logout()

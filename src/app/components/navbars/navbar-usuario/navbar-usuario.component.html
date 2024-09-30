@@ -15,15 +15,64 @@
     </div>
 
 </div>
-<button (click)="cerrarSesion()"  type="button" class="btn btn-danger">Cerrar Sesión</button>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button (click)="cerrarSesion()"  type="button" class="btn btn-danger">Cerrar Sesión</button>
+<div class="modal fade" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-xs">
+      <div class="modal-content">
+        <!--Importante usar data-bs-dismiss="modal" si no queda el modal abierto -->
+
+        <div
+          class="d-flex flex-column justify-content-center w-90 gap-2 text-center "
+          style="margin-top: 16px"
+        >
+          <!--Info usuario-->
+
+          <img src="assets/perro.png" class="rounded-circle" alt="..." />
+
+          <div class="container">
+            <p class="fw-bold fs-3">Nombre usuario</p>
+            <p>La Matanza, Buenos Aires</p>
+          </div>
+
+          <!--Botones-->
+          <div class="d-flex flex-column justify-content-center gap-2">
+            <button
+              (click)="cerrarSesion()"
+              type="button"
+              class="btn boton"
+              data-bs-dismiss="modal"
+            >
+              Mascotas publicadas
+            </button>
+
+            <button
+              (click)="cerrarSesion()"
+              type="button"
+              class="btn boton"
+              data-bs-dismiss="modal"
+            >
+              Editar perfil
+            </button>
+
+            <button
+              (click)="cerrarSesion()"
+              type="button"
+              class="btn btn-danger boton-cerrar"
+              data-bs-dismiss="modal"
+            >
+              Cerrar Sesión
+            </button>
+
+            <button
+              type="button"
+              class="btn boton-cerrar"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            ><i class="bi bi-x"></i>Cerrar</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
