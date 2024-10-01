@@ -1,15 +1,15 @@
 <div class="navbar container-sm">
 
-    <div class="container-fluid justify-content-between">
+    <div class="container-fluid justify-content-between" *ngIf="usuarioActual">
 
         <a class="navbar-brand" href="#">
             <img src="assets/isotipo.png" alt="Logo" height="63">
         </a>
 
-        <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{municipio}}, {{provincia}}</span>
+        <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{usuarioActual.municipio}}, {{usuarioActual.provincia}}</span>
 
         <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img [src]="urlImagenPerfil==null ? 'assets/perfil.png' : urlImagenPerfil" alt="Imagen perfil" height="63" class="rounded-circle">
+            <img [src]="usuarioActual.urlImagenPerfil==null ? 'assets/perfil.png' : usuarioActual.urlImagenPerfil" alt="Imagen perfil" height="63" class="rounded-circle">
         </a>
 
     </div>
@@ -18,7 +18,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1">
+<div class="modal fade" id="exampleModal" tabindex="-1" *ngIf="usuarioActual">
     <div class="modal-dialog modal-xs">
       <div class="modal-content">
         <!--Importante usar data-bs-dismiss="modal" si no queda el modal abierto -->
@@ -29,11 +29,11 @@
         >
           <!--Info usuario-->
 
-          <img [src]="urlImagenPerfil==null ? 'assets/perfil.png' : urlImagenPerfil" class="rounded-circle"/>
+          <img [src]="usuarioActual.urlImagenPerfil==null ? 'assets/perfil.png' : usuarioActual.urlImagenPerfil" class="rounded-circle"/>
 
           <div class="container">
-            <p class="fw-bold fs-3">{{nombre}}</p>
-            <p>{{municipio}}, {{provincia}}</p>
+            <p class="fw-bold fs-3">{{usuarioActual.nombreCompleto}}</p>
+            <p>{{usuarioActual.municipio}}, {{usuarioActual.provincia}}</p>
           </div>
 
           <!--Botones-->
@@ -75,4 +75,4 @@
         </div>
       </div>
     </div>
-  </div>
+</div>

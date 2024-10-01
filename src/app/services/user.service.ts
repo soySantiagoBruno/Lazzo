@@ -107,6 +107,46 @@ export class UserService {
   }
   
 
+  // Me traigo un usuario a partir del UID
+  async getUsuario(): Promise<UsuarioRegisterDto>{
+    let uidUserActual = this.auth.currentUser?.uid;
+    const userRef = collection(this.firestore, "usuarios");
+
+    const usuarioTraido: UsuarioRegisterDto = {
+      nombreCompleto: '',
+      celular: undefined,
+      email: '',
+      provincia: '',
+      municipio: '',
+      tieneWhatsapp: false,
+      password: '',
+      urlImagenPerfil:''
+    };
+
+    // Realizar la consulta en Firestore
+    const q = query(userRef, where("uid", "==", uidUserActual));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      usuarioTraido.provincia = doc.data()['provincia']
+      usuarioTraido.municipio = doc.data()['municipio']
+      usuarioTraido.nombreCompleto = doc.data()['nombreCompleto']
+      usuarioTraido.celular = doc.data()['celular']
+      usuarioTraido.tieneWhatsapp = doc.data()['tieneWhatsapp']
+      usuarioTraido.email = doc.data()['email']
+      usuarioTraido.mascotasEnAdopcion = doc.data()['mascotasEnAdopcion']
+
+    });
+
+    // Si es un usuario logueado con google, aparte traeme la foto de perfil
+    if(this.auth.currentUser){
+      usuarioTraido.urlImagenPerfil = this.auth.currentUser.photoURL?.replace('s96-c', 's400-c');
+    }
+
+    return usuarioTraido;
+  }
+
   logout(){
     return signOut(this.auth);
   }

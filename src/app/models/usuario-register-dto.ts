@@ -2,10 +2,11 @@ import { MascotaRegisterDto } from "./mascota-register-dto";
 
 export interface UsuarioRegisterDto {
     uid?: string;
-    nombreCompleto: String;
+    nombreCompleto: string;
+    urlImagenPerfil?: string;
     
     // Datos de contacto
-    celular: Number;
+    celular?: Number;
     email: string;
     provincia: string;
     municipio: string;
