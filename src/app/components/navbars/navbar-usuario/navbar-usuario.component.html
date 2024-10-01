@@ -6,10 +6,10 @@
             <img src="assets/isotipo.png" alt="Logo" height="63">
         </a>
 
-        <span class="ubicacion"><img src="assets/location-empty.svg" alt=""> Chubut, AR</span>
+        <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{municipio}}, {{provincia}}</span>
 
         <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="assets/perfil.png" alt="Logo" height="63">
+            <img [src]="urlImagenPerfil==null ? 'assets/perfil.png' : urlImagenPerfil" alt="Imagen perfil" height="63" class="rounded-circle">
         </a>
 
     </div>
@@ -29,11 +29,11 @@
         >
           <!--Info usuario-->
 
-          <img src="assets/perro.png" class="rounded-circle" alt="..." />
+          <img [src]="urlImagenPerfil==null ? 'assets/perfil.png' : urlImagenPerfil" class="rounded-circle"/>
 
           <div class="container">
-            <p class="fw-bold fs-3">Nombre usuario</p>
-            <p>La Matanza, Buenos Aires</p>
+            <p class="fw-bold fs-3">{{nombre}}</p>
+            <p>{{municipio}}, {{provincia}}</p>
           </div>
 
           <!--Botones-->
