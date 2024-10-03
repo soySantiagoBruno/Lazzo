@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, user } from '@angular/fire/auth';
-import { addDoc, collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, getAuth, updateEmail, reauthenticateWithCredential, EmailAuthProvider, verifyBeforeUpdateEmail } from '@angular/fire/auth';
+import { addDoc, collection, doc, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { UsuarioRegisterDto } from '../models/usuario-register-dto';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioRegisterGoogleDto } from '../models/usuario-register-google-dto';
 import { UsuarioLogin } from '../models/usuario-login';
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -107,8 +108,80 @@ export class UserService {
   }
   
 
+  async actualizarUsuario(usuario: any){
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    let uidUserActual = this.auth.currentUser?.uid;
+    console.log(`uid ${uidUserActual}`);
+    
+    if (!user) {
+      throw new Error('No se encontró al usuario autenticado.');
+    }
+  
+    /* console.log(`contraseña: ${usuario.password}`);
+    
+    // Reautenticar al usuario antes de actualizar el email
+    const credential = EmailAuthProvider.credential(usuario.email as string, usuario.password);
+    console.log(`el email ${usuario.email} el password ${usuario.password}`);
+  
+    try {
+      // Reautenticación con las credenciales del usuario (email y contraseña actuales)
+      await reauthenticateWithCredential(user, credential);
+      console.log('Reautenticación exitosa.');
+  
+      // Si la reautenticación es exitosa, actualizamos el email
+      await updateEmail(user, usuario.email);
+      console.log('Email actualizado con éxito en Firebase Authentication');
+      
+    } catch (error) {
+      console.error('Error durante la reautenticación o actualización del email:', error);
+      throw error;
+    }
+   */
+    // Después de la reautenticación y actualización de email, actualizamos los datos en Firestore (esto no lo vamos a hacer)
+
+    await updateEmail(user, usuario.email).then((data) => console.log("correo actualizado exitosamente"));
+
+    // esto tiene que ser DESPUÉS de traer el uid
+    // Coleccion usuario en Firestore
+    const userRef = collection(this.firestore, 'usuarios');
+
+    // Hacemos una consulta para buscar el documento donde el campo 'uid' sea igual al uidUserActual
+    const q = query(userRef, where('uid', '==', uidUserActual));
+
+    // Obtenemos los documentos que coincidan con la consulta
+    const querySnapshot = await getDocs(q);
+
+    // Asumimos que hay un solo documento que coincide con el UID
+    const userDoc = querySnapshot.docs[0]; // Obtenemos el primer documento
+    const userDocId = userDoc.id; // Obtenemos el ID del documento
+
+    console.log(`ID del documento del usuario: ${userDocId}`);
+
+    // Referencia al documento del usuario
+    const userDocRef = doc(this.firestore, `usuarios/${userDocId}`); 
+    // estamos mandando a crear un nuevo documento en "usuarios"
+
+    return updateDoc(userDocRef, {
+      // Datos traidos del usuario authenticado actualmente
+      uid: uidUserActual, // Asociar los datos al UID del usuario
+      email: usuario.email ,
+      
+      // Datos traidos del formulario
+      nombreCompleto: usuario.nombreCompleto,
+      celular: usuario.celular,
+      provincia: usuario.provincia,
+      municipio: usuario.municipio,
+      tieneWhatsapp: usuario.tieneWhatsapp,
+    });
+  }
+
+
+
   // Me traigo un usuario a partir del UID
-  async getUsuario(): Promise<UsuarioRegisterDto>{
+  async getUsuario(): Promise<UsuarioRegisterDto | null>{
+    
     let uidUserActual = this.auth.currentUser?.uid;
     const userRef = collection(this.firestore, "usuarios");
 
@@ -146,6 +219,7 @@ export class UserService {
 
     return usuarioTraido;
   }
+  
 
   logout(){
     return signOut(this.auth);

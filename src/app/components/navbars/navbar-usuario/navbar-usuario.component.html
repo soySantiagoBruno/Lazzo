@@ -8,7 +8,7 @@
 
         <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{usuarioActual.municipio}}, {{usuarioActual.provincia}}</span>
 
-        <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#modalUsuario">
             <img [src]="usuarioActual.urlImagenPerfil==null ? 'assets/perfil.png' : usuarioActual.urlImagenPerfil" alt="Imagen perfil" height="63" class="rounded-circle">
         </a>
 
@@ -18,7 +18,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" *ngIf="usuarioActual">
+<div class="modal fade" id="modalUsuario" tabindex="-1" *ngIf="usuarioActual">
     <div class="modal-dialog modal-xs">
       <div class="modal-content">
         <!--Importante usar data-bs-dismiss="modal" si no queda el modal abierto -->
@@ -38,23 +38,23 @@
 
           <!--Botones-->
           <div class="d-flex flex-column justify-content-center gap-2">
-            <button
-              (click)="cerrarSesion()"
+            <a
+              routerLink="/editar-perfil"
               type="button"
               class="btn boton"
               data-bs-dismiss="modal"
             >
               Mascotas publicadas
-            </button>
+          </a>
 
-            <button
-              (click)="cerrarSesion()"
+            <a
+            routerLink="/editar-perfil"
               type="button"
               class="btn boton"
               data-bs-dismiss="modal"
             >
               Editar perfil
-            </button>
+            </a>
 
             <button
               (click)="cerrarSesion()"
@@ -69,7 +69,7 @@
               type="button"
               class="btn boton-cerrar"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              data-bs-target="#modalUsuario"
             ><i class="bi bi-x"></i>Cerrar</button>
           </div>
         </div>

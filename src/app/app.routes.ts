@@ -10,6 +10,8 @@ import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular
 import { RegistrarUsuarioGoogleComponent } from './components/registrar-usuario-google/registrar-usuario-google.component';
 import { MyGuard } from './guards/my-guard';
 import { LoginGuard } from './guards/login-guard';
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
 
 
 
@@ -38,6 +40,19 @@ export const routes: Routes = [
         component: PublicarMascotaComponent,
         canActivate:[MyGuard],
     },
+
+    {
+        path: 'editar-perfil',
+        component: EditarPerfilComponent,
+        //canActivate:[MyGuard],
+    },
+
+    {
+        path: 'cambiar-password',
+        component: CambiarPasswordComponent,
+        //canActivate:[MyGuard],
+    },
+
     
     // Redirecciones y página 404
     {path: '', redirectTo: '/home', pathMatch: 'full'},

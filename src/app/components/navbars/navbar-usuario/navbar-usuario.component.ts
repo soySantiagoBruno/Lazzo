@@ -19,7 +19,7 @@ import { NgIf } from '@angular/common';
 })
 export class NavbarUsuarioComponent implements OnInit{
 
-  usuarioActual?: UsuarioRegisterDto;
+  usuarioActual?: UsuarioRegisterDto|null;
 
 
   constructor(

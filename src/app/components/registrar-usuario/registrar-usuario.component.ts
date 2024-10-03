@@ -33,9 +33,9 @@ export class RegistrarUsuarioComponent implements OnInit{
     this.formularioRegister = registerFormService.createRegisterForm();
   }
 
-   ngOnInit(): void {
-    this.cargarProvincias();
-    this.desabilitarSelectMunicipio()
+  ngOnInit(): void {
+  this.cargarProvincias();
+  this.desabilitarSelectMunicipio()
   }
 
   onSubmit(){
