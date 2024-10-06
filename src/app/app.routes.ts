@@ -48,7 +48,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'cambiar-password',
+        path: 'editar-password',
         component: CambiarPasswordComponent,
         //canActivate:[MyGuard],
     },
