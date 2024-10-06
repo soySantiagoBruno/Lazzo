@@ -54,11 +54,9 @@ export class EditarPerfilComponent implements OnInit{
       this.auth.onAuthStateChanged(async (user) => {
 
           this.usuarioActual = await this.userService.getUsuario()
-          console.log(this.usuarioActual);
 
           this.formularioEditarUsuario.patchValue({
             nombreCompleto: this.usuarioActual?.nombreCompleto,
-            email: this.usuarioActual?.email,
             celular: this.usuarioActual?.celular,
             provincia: this.usuarioActual?.provincia,
             municipio: this.usuarioActual?.municipio,

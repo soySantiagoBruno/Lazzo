@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UsuarioRegisterGoogleDto } from '../models/usuario-register-google-dto';
 import { UsuarioLogin } from '../models/usuario-login';
 import { log } from 'console';
+import { sendEmailVerification } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -112,42 +113,17 @@ export class UserService {
     const auth = getAuth();
     const user = auth.currentUser;
 
-    let uidUserActual = this.auth.currentUser?.uid;
-    console.log(`uid ${uidUserActual}`);
     
     if (!user) {
       throw new Error('No se encontró al usuario autenticado.');
     }
-  
-    /* console.log(`contraseña: ${usuario.password}`);
+
+    let uidUserActual = user.uid;
     
-    // Reautenticar al usuario antes de actualizar el email
-    const credential = EmailAuthProvider.credential(usuario.email as string, usuario.password);
-    console.log(`el email ${usuario.email} el password ${usuario.password}`);
-  
-    try {
-      // Reautenticación con las credenciales del usuario (email y contraseña actuales)
-      await reauthenticateWithCredential(user, credential);
-      console.log('Reautenticación exitosa.');
-  
-      // Si la reautenticación es exitosa, actualizamos el email
-      await updateEmail(user, usuario.email);
-      console.log('Email actualizado con éxito en Firebase Authentication');
-      
-    } catch (error) {
-      console.error('Error durante la reautenticación o actualización del email:', error);
-      throw error;
-    }
-   */
-    // Después de la reautenticación y actualización de email, actualizamos los datos en Firestore (esto no lo vamos a hacer)
-
-    await updateEmail(user, usuario.email).then((data) => console.log("correo actualizado exitosamente"));
-
-    // esto tiene que ser DESPUÉS de traer el uid
-    // Coleccion usuario en Firestore
+    // Armamos la referencia para hacer la query
     const userRef = collection(this.firestore, 'usuarios');
 
-    // Hacemos una consulta para buscar el documento donde el campo 'uid' sea igual al uidUserActual
+    // Armamos la query para buscar el documento donde el campo 'uid' sea igual al uidUserActual
     const q = query(userRef, where('uid', '==', uidUserActual));
 
     // Obtenemos los documentos que coincidan con la consulta
@@ -157,16 +133,13 @@ export class UserService {
     const userDoc = querySnapshot.docs[0]; // Obtenemos el primer documento
     const userDocId = userDoc.id; // Obtenemos el ID del documento
 
-    console.log(`ID del documento del usuario: ${userDocId}`);
-
-    // Referencia al documento del usuario
+    // Referencia al DOCUMENTO DEL USUARIO que nos trajimos con la querySnapshot
     const userDocRef = doc(this.firestore, `usuarios/${userDocId}`); 
-    // estamos mandando a crear un nuevo documento en "usuarios"
 
+    // Ahora actualizamos ese documento específico con los datos que traemos del formulario
     return updateDoc(userDocRef, {
       // Datos traidos del usuario authenticado actualmente
       uid: uidUserActual, // Asociar los datos al UID del usuario
-      email: usuario.email ,
       
       // Datos traidos del formulario
       nombreCompleto: usuario.nombreCompleto,
