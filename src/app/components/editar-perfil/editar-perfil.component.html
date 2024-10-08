@@ -46,6 +46,10 @@
                 </select>
             </div>
 
+
+            <div class="registrar d-flex justify-content-center gap-3">
+                <a routerLink="/editar-password">Cambiar contraseña</a>
+            </div>
             
 
             <div class="mb-3">
@@ -54,7 +58,10 @@
 
         </form>
 
-
+    <button [routerLink]="'../home-usuario'"
+    type="button"
+    class="boton-cerrar"
+    ><i class="bi bi-x"></i>Volver</button>
 
     </div>
 

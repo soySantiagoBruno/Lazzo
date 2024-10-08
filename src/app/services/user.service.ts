@@ -6,7 +6,8 @@ import { Router, RouterLink } from '@angular/router';
 import { UsuarioRegisterGoogleDto } from '../models/usuario-register-google-dto';
 import { UsuarioLogin } from '../models/usuario-login';
 import { log } from 'console';
-import { sendEmailVerification } from 'firebase/auth';
+import { sendEmailVerification, updatePassword } from 'firebase/auth';
+import { EditarPasswordFormService } from '../forms/editar-password-form.service';
 
 @Injectable({
   providedIn: 'root'
@@ -151,6 +152,23 @@ export class UserService {
   }
 
 
+  async actualizarPassword(editarPasswordForm: any){
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      throw new Error('No se encontró al usuario autenticado.');
+    }
+
+
+    // 1. vuelvo a pedir la credencial (para poder reautenticar)
+    const credential = EmailAuthProvider.credential(user.email as string, editarPasswordForm.currentPassword)
+
+    await reauthenticateWithCredential(user, credential)
+    await updatePassword(user, editarPasswordForm.newPassword)
+  }
+
+
 
   // Me traigo un usuario a partir del UID
   async getUsuario(): Promise<UsuarioRegisterDto | null>{
@@ -197,5 +215,31 @@ export class UserService {
   logout(){
     return signOut(this.auth);
   }
+
+
+  async obtenerIdUsuarioDocumento() {
+    const user = this.auth.currentUser;
+
+    if (user) {
+      const uid = user.uid; // Obtiene el UID del usuario autenticado
+      
+      // Realiza una consulta para encontrar el documento en Firestore
+      const usuariosRef = collection(this.firestore, 'usuarios');
+      const q = query(usuariosRef, where('uid', '==', uid)); // Asegúrate de tener el campo 'uid' en tus documentos
+
+      const querySnapshot = await getDocs(q);
+      let documentId = '';
+
+      querySnapshot.forEach((doc) => {
+        documentId = doc.id; // Obtiene el ID del documento
+      });
+
+      return documentId; // Devuelve el ID del documento
+    } else {
+      console.error('No hay usuario autenticado');
+      return null;
+    }
+  }
+
 
 }

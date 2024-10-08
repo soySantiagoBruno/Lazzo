@@ -11,7 +11,7 @@ import { RegistrarUsuarioGoogleComponent } from './components/registrar-usuario-
 import { MyGuard } from './guards/my-guard';
 import { LoginGuard } from './guards/login-guard';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-import { CambiarPasswordComponent } from './components/cambiar-password/cambiar-password.component';
+import { EditarPasswordComponent } from './components/editar-password/editar-password.component';
 
 
 
@@ -49,7 +49,7 @@ export const routes: Routes = [
 
     {
         path: 'editar-password',
-        component: CambiarPasswordComponent,
+        component: EditarPasswordComponent,
         //canActivate:[MyGuard],
     },
 

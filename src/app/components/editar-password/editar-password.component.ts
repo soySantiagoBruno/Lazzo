@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EditarPasswordFormService } from '../../forms/editar-password-form.service';
+import { UserService } from '../../services/user.service';
+import { Router, RouterLink } from '@angular/router';
+import { Auth } from 'firebase/auth';
 
 @Component({
   selector: 'app-editar-password',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './editar-password.component.html',
   styleUrl: './editar-password.component.css'
 })
@@ -12,16 +16,24 @@ export class EditarPasswordComponent {
 
   formularioEditarPassword: FormGroup;
 
-  constructor(){
-    this.formularioEditarPassword = new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    })
+  constructor(
+    private editarPasswordFormService: EditarPasswordFormService,
+    private userService: UserService,
+    private router: Router,
+    //private auth: Auth
+  ){
+    this.formularioEditarPassword = editarPasswordFormService.createEditarPasswordForm()
   }
 
 
-  onSubmit(){
-    console.log("enviando formulario...");
-    
+  actualizarPassword(){
+    this.userService.actualizarPassword(this.formularioEditarPassword)
+    .then(response => {
+      this.router.navigate(["/home-usuario"])
+    }
+    );
+
+    console.log("enviando formulario...")
   }
 
 }

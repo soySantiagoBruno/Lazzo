@@ -15,19 +15,21 @@
 
 
     <div class="filtro">
-        <form action="">
+        <form [formGroup]="publicarMascotaForm" (ngSubmit)="registrarMascota()">
             <!--Tipo-->
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Tipo</label>
+                <label for="tipo" class="form-label">Tipo</label>
                 <div class="d-flex gap-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input formControlName="tipo" value="perro"
+                        class="form-check-input" type="radio" name="tipo" id="tipo">
                         <label class="form-check-label" for="flexRadioDefault1">
                         Perro
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input formControlName="tipo" value="gato"
+                         class="form-check-input" type="radio" name="tipo" id="tipo">
                         <label class="form-check-label" for="flexRadioDefault2">
                         Gato
                         </label>
@@ -38,23 +40,26 @@
 
             <!--Nombre-->
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingre el nombre">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input formControlName="nombre"
+                type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre de la mascota">
             </div>
             
             <!--Sexo-->
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Sexo</label>
+                <label for="sexo" class="form-label">Sexo</label>
                 <div class="d-flex gap-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input formControlName="sexo" value="macho"
+                         class="form-check-input" type="radio" name="sexo" id="sexo">
                         <label class="form-check-label" for="flexRadioDefault1">
                             Macho <i class="material-icons">male</i>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input formControlName="sexo" value="hembra"
+                         class="form-check-input" type="radio" name="sexo" id="sexo">
+                        <label class="form-check-label" for="sexo">
                             Hembra <i class="material-icons">female</i>
                         </label>
                     </div>
@@ -64,26 +69,28 @@
         
             <!--Tamaño-->
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Tamaño</label>
+                <label class="form-label">Tamaño</label>
         
-                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select formControlName="tamanio"
+                 class="form-select form-select-lg mb-3" aria-label="Large select example">
                     <option selected></option>
-                    <option value="1">Chico</option>
-                    <option value="2">Mediano</option>
-                    <option value="3">Grande</option>
+                    <option value="chico">Chico</option>
+                    <option value="mediano">Mediano</option>
+                    <option value="grande">Grande</option>
                 </select>
             </div>
         
             <!--Edad-->
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Edad</label>
+                <label class="form-label">Edad</label>
         
-                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select formControlName="edad"
+                 class="form-select form-select-lg mb-3">
                     <option selected></option>
-                    <option value="1">Cachorros</option>
-                    <option value="2">Jovenes (2-4 años)</option>
-                    <option value="3">Adultos (5-9 años)</option>
-                    <option value="4">Viejitos (+10 años)</option>
+                    <option value="cachorros">Cachorros</option>
+                    <option value="Jovenes (2-4 años)">Jovenes (2-4 años)</option>
+                    <option value="Adultos (5-9 años)">Adultos (5-9 años)</option>
+                    <option value="Viejitos (+10 años)">Viejitos (+10 años)</option>
                 </select>
         
             </div>
@@ -91,20 +98,41 @@
                     
             <!--Ubicación-->
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Ubicación</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Selecciona tu ubicación">
+              
+                <!--Provincia-->
+                <select formControlName="provincia" class="dropdown-toggle input-whatsapp w-100">
+                    <option class="dropdown-item" value="" disabled selected>Provincia</option>
+                    <option class="dropdown-item" *ngFor="let provincia of provincias" [ngValue]="provincia">{{provincia}}</option>
+                </select>
+ 
             </div>
             
+            <div class="mb-3" *ngIf="tocado">
+                <!--Municipio-->
+                <select 
+                formControlName="municipio" 
+                class="dropdown-toggle ms-1 input-whatsapp w-100"
+                
+                >
+                    <option class="dropdown-item" value="" disabled selected>Municipio</option>
+    
+                    <option class="dropdown-item" *ngFor="let municipio of municipios" [ngValue]="municipio">{{municipio}}</option>
+                </select>
+            </div>
+            
+            
             <!--Descripción-->
-            <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese una breve descripción..." style="border-radius: 16px !important;"></textarea>
+            <textarea formControlName="descripcion"
+             class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese una breve descripción..." style="border-radius: 16px !important;"></textarea>
             
             <!--Subir foto-->
-            <input type="file" id="input-file-now" class="file-upload-input mb-3" data-mdb-file-upload-init="" accept="" autocompleted="">
+            <input formControlName="urlImagen"
+            type="file"  class="file-upload-input mb-3" data-mdb-file-upload-init="" accept="" autocompleted="">
 
             <!--Politicas-->
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="politicas">
+                <label class="form-check-label" for="politicas">
                   <p class="politicas">Conozco y acepto las <a href="">políticas y buenas practicas de adopción de Lazzo.</a></p>
                 </label>
             </div>

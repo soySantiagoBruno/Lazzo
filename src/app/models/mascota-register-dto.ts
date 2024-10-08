@@ -1,12 +1,14 @@
 export interface MascotaRegisterDto {
-    uid: string;
+    uid?: string;
     tipo: string;
     nombre: string;
     sexo: string;
     tamanio: string;
     edad: string;
+    provincia: string;
+    municipio: string;
     descripcion: string;
-    imagen?: string;
+    urlImagen?: string;
 
-    uidUsuario: string; // Indica a que usuario pertenece
+    uidMascota: string; // Indica a que usuario pertenece
 }

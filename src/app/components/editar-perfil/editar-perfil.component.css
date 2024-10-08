@@ -65,15 +65,32 @@ img {
     line-height: normal;
   }
   
-  .registrar a{
-    /* cuerpos y textos pequeños/Cuerpos subrayados */
+.registrar a{
+  color: var(--Black, #222);
+
+    /* cuerpos y textos pequeños/Cuerpos normales */
     font-family: "Plus Jakarta Sans";
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    text-decoration-line: underline !important;
-  
-    margin-top: 20px;
-    margin-bottom: 38px;
-  }
+}
+
+.boton-cerrar {
+  width: 100%;
+  border-radius: 48px !important;
+  border-color: transparent;
+  background-color: transparent !important;
+  display: flex;
+
+  margin-top: 12px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  color: black;
+}
+
+.boton-cerrar:hover{
+  background-color: transparent !important;
+}
