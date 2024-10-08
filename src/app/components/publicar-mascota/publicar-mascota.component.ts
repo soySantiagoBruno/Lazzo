@@ -6,6 +6,7 @@ import { PublicarMascotaFormService } from '../../forms/publicar-mascota-form.se
 import { UbicacionApiService } from '../../services/ubicacion-api.service';
 import { NgForOf, NgIf } from '@angular/common';
 import { MascotaService } from '../../services/mascota.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicar-mascota',
@@ -28,7 +29,7 @@ export class PublicarMascotaComponent implements OnInit{
     private mascotaService: MascotaService,
     private publicarMascotaFormService: PublicarMascotaFormService,
     private ubicacionApiService: UbicacionApiService,
-
+    private router: Router
   ){
     this.publicarMascotaForm = publicarMascotaFormService.createPublicarMascotaForm();
   }
@@ -42,10 +43,10 @@ export class PublicarMascotaComponent implements OnInit{
 
   registrarMascota(){
     this.mascotaService.registrarMascota(this.publicarMascotaForm.value)
-    .then(response=>
+    .then(response=>{
       console.log("Registro exitoso")
-      // redirijir a home-usuario?      
-    )
+      this.router.navigate(["/home-usuario"]) 
+    })
     
   }
 
