@@ -1,28 +1,38 @@
-# FrontendAdoptapp
+# 🐾 Lazzo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+**Lazzo** es una aplicación web desarrollada con **Angular** en el frontend y **Firebase** (Firestore + Authentication) en el backend.  
+Su objetivo principal es **conectar refugios y organizaciones que tengan animales en adopción con personas interesadas en sumar un nuevo integrante a su familia** 🏡🐶🐱.  
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologías utilizadas
 
-## Code scaffolding
+- **Angular** – Frontend  
+- **Firebase Authentication** – Inicio de sesión con Google  
+- **Cloud Firestore** – Almacenamiento de datos de mascotas y usuarios  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## ✨ Funcionalidades principales (MVP)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- 📖 Catálogo de mascotas en adopción  
+- 📝 Publicación de mascotas por parte de refugios u organizaciones  
+- 🔑 Social Login (Google) para validar usuarios y permitir publicaciones  
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🐾 Función principal (a futuro)
 
-## Running end-to-end tests
+- 🤝 Comunicación directa entre **adoptantes** y **refugios/adoptados**  
+- 🐾 Apartado especial de **mascotas extraviadas**  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 💡 Otros servicios (en el roadmap)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# test
+- ✂️ Promoción de **peluquerías y veterinarias**  
+- 🐕 Servicios de **castración y cuidado responsable**  
+- 📍 Sección dedicada a **mascotas extraviadas** con filtros por ubicación  
+
+---
+- Lorena  
