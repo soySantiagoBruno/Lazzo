@@ -35,4 +35,3 @@ Su objetivo principal es **conectar refugios y organizaciones que tengan animale
 - 📍 Sección dedicada a **mascotas extraviadas** con filtros por ubicación  
 
 ---
-- Lorena  
