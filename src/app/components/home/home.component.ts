@@ -4,13 +4,14 @@ import { CarruselComponent } from "../carrusels/carrusel/carrusel.component";
 import { InfoMascotaComponent } from "../info-mascota/info-mascota.component";
 import { NavbarComponent } from "../navbars/navbar/navbar.component";
 import { RouterLink } from '@angular/router';
+import { FiltroComponent } from '../filtro/filtro.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [FooterComponent, CarruselComponent, InfoMascotaComponent, NavbarComponent, RouterLink]
+    imports: [FooterComponent, CarruselComponent, InfoMascotaComponent, FiltroComponent, NavbarComponent, RouterLink]
 })
 export class HomeComponent {
 

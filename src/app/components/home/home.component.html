@@ -4,7 +4,22 @@
 <div class="container">
   <h1>En <span style="color:#4B88A2">Lazzo</span> un amigo espera</h1>
 
-  <h3 class="mx-3" style="text-align: center;">En busca de un hogar</h3>
+
+  <!--Filtro-->
+  <p class="filtro-general gap-4">
+    <span class="ciudad fs-5"><i style="color:#E5A700" class="bi bi-geo-alt-fill"></i> San Rafael <i class="bi bi-caret-down-fill"></i></span>
+    <button class="filtrar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class=" bi bi-filter-circle fs-5"></i> Filtrar
+    </button>
+    </p>
+
+  <div class="collapse" id="collapseExample">
+      <div class="card card-body p-0">
+
+        <app-filtro></app-filtro>
+        
+      </div>
+    </div>
 
   <app-carrusel></app-carrusel>
 </div>
