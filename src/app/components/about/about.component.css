@@ -1,0 +1,149 @@
+/* ...existing code... */
+.about{
+    background: var(--Black, #222);
+    color: white;
+    
+    padding: 32px 24px 90px 24px;
+    border-radius: 32px 32px 0px 0px;
+    width: 100%;
+    
+    /*esto es para que se superponga el div .funcionamiento*/
+    margin-bottom: -32px;
+    /*notar aumento del margin para tener 58px de distancia*/
+    margin-top: 63px;
+}
+
+.about-titulo{
+    margin: 0px;
+    margin-bottom: 24px;
+
+    color: var(--Fuchsia, #FF5E5B);
+    /* Titulos extra grandes */
+    font-family: "Plus Jakarta Sans";
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.funcionamiento{
+    border-radius: 32px 32px 0px 0px;
+    padding: 24px;
+    padding-bottom: 0px;
+    background-color: white;
+
+    margin-bottom: 0px;
+}
+
+.funcionamiento h3{
+    color: var(--Marine, #4B88A2);
+    /* Titulos medianos */
+    font-family: "Plus Jakarta Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.funcionamiento-text{
+    display: flex;
+    justify-content: center;
+    
+    color: var(--Black, #222);
+    /* Cuerpos normales */
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    margin: 24px;
+    margin-top: 8px;
+}
+
+.funcionamiento-botones{
+    width: 187px;
+    height: 55px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 32px;
+    background: var(--CTA, #E5A700);
+
+    /* shadow buttons */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), -12px 28px 8px 0px rgba(0, 0, 0, 0.00), -8px 18px 8px 0px rgba(0, 0, 0, 0.03), -4px 10px 7px 0px rgba(0, 0, 0, 0.10), -2px 4px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
+.adoptados{
+    background-color: #222222;
+
+    border-radius: 32px 32px 0px 0px;
+    margin: 0px;
+    margin-top: 59px;
+
+    padding: 30px 24px 180px 24px;
+}
+
+.adoptado-item {
+    height: 300px;
+    width: 100%;
+}
+
+#carouselAdoptados .carousel-item img{
+    height: 100%;
+    width: fit-content;
+}
+
+footer {
+    background-color: white;
+    border-radius: 32px 32px 0px 0px;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin-top: -60px;
+}
+
+.footer-content{
+    margin-top: 16px;
+}
+
+.footer-text {
+    color: #222 !important;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.footer-secundario {
+    color: #A1A1A1 !important;
+    /* Textos diminutos */
+    font-family: "Plus Jakarta Sans";
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer h5 {
+    color: #E5A700 !important;
+    font-family: "Space Grotesk";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.boton-adoptar{
+    color: black;
+    border-radius: 32px;
+    background: var(--CTA, #E5A700);
+
+    /* shadow buttons */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), -12px 28px 8px 0px rgba(0, 0, 0, 0.00), -8px 18px 8px 0px rgba(0, 0, 0, 0.03), -4px 10px 7px 0px rgba(0, 0, 0, 0.10), -2px 4px 5px 0px rgba(0, 0, 0, 0.17);
+}

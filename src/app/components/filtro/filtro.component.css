@@ -25,3 +25,32 @@
     gap: 8px;
     align-self: stretch;
 }
+
+
+.filtro-general{
+
+    padding: 10px 0px !important;
+    display: flex;
+    border-radius: 40px !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    border: 1px solid #e0e0e0; /* borde gris claro */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* sombra sutil */
+
+}
+
+
+.filtrar{
+    background-color: #E5A700;
+    color: var(--Black, #222);
+    font-family: "Space Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    border-radius: 40px !important;
+    padding: 0px 15px !important;
+}
