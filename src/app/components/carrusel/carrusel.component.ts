@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoMascotaComponent } from "../../info-mascota/info-mascota.component";
+import { InfoMascotaComponent } from "../info-mascota/info-mascota.component";
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CartaComponent } from "../../carrusel/carta/carta.component";
-import { Pet, PETS } from '../../../mocks/pets.mock';
+import { CartaComponent } from "./carta/carta.component";
+import { Pet, PETS } from '../../mocks/pets.mock';
 
 @Component({
     selector: 'app-carrusel',
@@ -33,7 +33,7 @@ export class CarruselComponent implements OnInit {
     }
 
     abrirModal(proyecto: any) {
-    const modalRef = this.modalService.open(ModalProyectoComponent,{
+    const modalRef = this.modalService.open(CartaComponent,{
       windowClass: 'modal-personalizado',
       size: 'lg',
       scrollable: true

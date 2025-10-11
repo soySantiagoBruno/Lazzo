@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CarruselComponent } from '../carrusels/carrusel/carrusel.component';
+import { CarruselComponent } from '../carrusel/carrusel.component';
 import { FooterComponent } from '../footers/footer/footer.component';
 import { NavbarComponent } from '../navbars/navbar/navbar.component';
 
