@@ -1,182 +1,71 @@
-  <!--Carrousel-->
+<!--Carrousel-->
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
     <div class="carousel-inner">
-      
-      <div class="carousel-item active">
-          <!--Carta 1-->
-            <div class="card mx-auto">
-              <img src="assets/perro.png" class="card-img-top" alt="...">
-
-              <div class="card-body">
-                  <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-
-                      <span>
-                          <h5 class="card-title">Roco</h5>
-                          <p class="card-text">Chubut-AR</p>
-                      </span>
-                      <span>
-                          <!--Poner los iconos de 32x32 px aca-->
-                          <img src="assets/share.svg" alt="">
-                      </span>
-                  </div>
-                  
-                  <div class="d-flex justify-content-center" style="margin-top: 16px;">
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn boton-mas-info me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Mas info</button>
-                      <a href="https://wa.me/542604818244?text=Hola%21%20quiero%20adoptar%20una%20mascota" class="btn boton-adoptar">Adoptar</a>
-                  </div>
-              </div>
-
-            </div>
-      </div>
-
-      <!-- Modal 1-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
-        <div class="modal-dialog container-md mx-auto">
-          <div class="modal-content">
-            <!--Carta Modal-->
-            <div class="card-modal mx-auto">
-              <img src="assets/perro.png" class="card-modal-img" alt="...">
-  
-              <div class="card-modal-body">
-  
-                <!--Info principal-->
-                <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-  
-                  <span style="width: 100%;">
-                    <h5 class="card-modal-title">Roco</h5>
-                    <p class="card-modal-ubicacion"><img class="m-0" src="assets/location.svg" alt="">Chubut-AR</p>
-                  </span>
-                  <span>
-                    <img class="m-0" src="assets/share.svg" alt="">
-                  </span>
-                </div>
-  
-                <!--Detalles-->
-                <div class="detalles-modal">
-                  <p><strong>Tamaño</strong>: Mediano</p>
-                  <p><strong>Edad</strong>: Joven (2 a 4 años)</p>
-                  <p><strong>Sexo</strong>: Macho</p>
-                  <br>
-                  <p><strong>Descripción</strong>:</p>
-                  <p>Roco es un adorable perrito mestizo de 3 años en busca de un hogar amoroso. Es amigable, juguetón y le
-                    encanta pasear. Está vacunado y esterilizado. </p>
-                  <br>
-                  <p><strong>Contacto</strong></p>
-                  <p>Teléfono: +52 9 2604111111</p>
-                  <p>Correo: adopta&#64;refugiopatitas.org</p>
-                </div>
-  
-  
-                <!--Botones-->
-                <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
-                  <!-- Button trigger modal -->
-                  <a href="https://wa.me/542604818244?text=Hola%21%20quiero%20adoptar%20una%20mascota" class="btn boton-adoptar">Adoptar</a>
-
-                  <button type="button" class="btn boton-cerrar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M18.5 18.4189L6.5 6.41895M6.5 18.4189L18.5 6.41895" stroke="#222222" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Cerrar
-                  </button>
-                </div>
-              </div>
-  
-  
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <div class="carousel-item">
-        <!--Carta 2-->
+      <div *ngFor="let pet of pets; let i = index" class="carousel-item" [class.active]="i === 0">
         <div class="card mx-auto">
-          <img src="assets/enadopcion3.jpg" class="card-img-top" alt="...">
-
+          <img [src]="pet.image" class="card-img-top" [alt]="pet.name">
           <div class="card-body">
-              <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
+            <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
+              <span>
+                <h5 class="card-title">{{ pet.name }}</h5>
+                <p class="card-text">{{ pet.location }}</p>
+              </span>
+              <span><img src="assets/share.svg" alt=""></span>
+            </div>
+            <div class="d-flex justify-content-center" style="margin-top: 16px;">
+              <button type="button" class="btn boton-mas-info me-2"
+                data-bs-toggle="modal"
+                [attr.data-bs-target]="'#modal-' + pet.id"
+                (click)="abrirModal(pet)">Mas info</button>
 
-                  <span>
-                      <h5 class="card-title">Firulais</h5>
-                      <p class="card-text">Chubut-AR</p>
-                  </span>
-                  <span>
-                      <!--Poner los iconos de 32x32 px aca-->
-                      <img src="assets/share.svg" alt="">
-                  </span>
-              </div>
-              
-              <div class="d-flex justify-content-center" style="margin-top: 16px;">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn boton-mas-info me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">Mas info</button>
-                  <a href="https://wa.me/542604818244?text=Hola%21%20quiero%20adoptar%20una%20mascota" class="btn boton-adoptar">Adoptar</a>
-              </div>
-          </div>
-
-        </div>
-      </div>
-      
-      <!-- Modal 2-->
-      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"> 
-        <div class="modal-dialog container-md mx-auto">
-          <div class="modal-content">
-            <!--Carta Modal-->
-            <div class="card-modal mx-auto">
-              <img src="assets/enadopcion3.jpg" class="card-modal-img" alt="...">
-  
-              <div class="card-modal-body">
-  
-                <!--Info principal-->
-                <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-  
-                  <span>
-                    <h5 class="card-modal-title">Luna</h5>
-                    <p class="card-modal-ubicacion"><img class="m-0" src="assets/location.svg" alt="">Chubut-AR</p>
-                  </span>
-                  <span>
-                    <img class="m-0" src="assets/share.svg" alt="">
-                  </span>
-                </div>
-  
-                <!--Detalles-->
-                <div class="detalles-modal">
-                  <p><strong>Tamaño</strong>: Pequeño</p>
-                  <p><strong>Edad</strong>: Joven (1 a 2 años)</p>
-                  <p><strong>Sexo</strong>: Hembra</p>
-                  <br>
-                  <p><strong>Descripción</strong>:</p>
-                  <p>Luna es una adorable gatita mestiza de 1 año en busca de un hogar amoroso. Es cariñosa, juguetona y le encanta trepar. Está vacunada y esterilizada.</p>
-                  <br>
-                  <p><strong>Contacto</strong></p>
-                  <p>Teléfono: +52 9 2604111111</p>
-                  <p>Correo: adopta&#64;refugiopatitas.org</p>
-                </div>
-  
-  
-                <!--Botones-->
-                <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn boton-adoptar">Adoptar</button>
-  
-                  <button type="button" class="btn boton-cerrar" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M18.5 18.4189L6.5 6.41895M6.5 18.4189L18.5 6.41895" stroke="#222222" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Cerrar
-                  </button>
-                </div>
-              </div>
-  
-  
+              <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar">Adoptar</a>
             </div>
           </div>
         </div>
+
+        <!-- Modal por mascota -->
+        <div class="modal fade" [id]="'modal-' + pet.id" tabindex="-1" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+          <div class="modal-dialog container-md mx-auto">
+            <div class="modal-content">
+              <div class="card-modal mx-auto">
+                <img [src]="pet.image" class="card-modal-img" [alt]="pet.name">
+                <div class="card-modal-body">
+                  <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
+                    <span style="width: 100%;">
+                      <h5 class="card-modal-title">{{ pet.name }}</h5>
+                      <p class="card-modal-ubicacion"><img class="m-0" src="assets/location.svg" alt="">{{ pet.location }}</p>
+                    </span>
+                    <span><img class="m-0" src="assets/share.svg" alt=""></span>
+                  </div>
+
+                  <div class="detalles-modal">
+                    <p><strong>Tamaño</strong>: {{ pet.size }}</p>
+                    <p><strong>Edad</strong>: {{ pet.age }}</p>
+                    <p><strong>Sexo</strong>: {{ pet.sex }}</p>
+                    <br>
+                    <p><strong>Descripción</strong>:</p>
+                    <p>{{ pet.description }}</p>
+                    <br>
+                    <p><strong>Contacto</strong></p>
+                    <p>Teléfono: {{ pet.contact.phone }}</p>
+                    <p>Correo: {{ pet.contact.email }}</p>
+                  </div>
+
+                  <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
+                    <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar mb-2">Adoptar</a>
+
+                    <button type="button" class="btn boton-cerrar" data-bs-dismiss="modal">
+                      <!-- icono -->
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      
     </div>
     
 
