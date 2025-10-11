@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoMascotaComponent } from "../../info-mascota/info-mascota.component";
 import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartaComponent } from "../../carta/carta.component";
 import { Pet, PETS } from '../../../mocks/pets.mock';
 
@@ -13,6 +14,8 @@ import { Pet, PETS } from '../../../mocks/pets.mock';
 })
 export class CarruselComponent implements OnInit {
 
+    constructor(private modalService: NgbModal) {}
+
     pets: Pet[] = [];
     // ...existing code...
 
@@ -20,9 +23,7 @@ export class CarruselComponent implements OnInit {
         this.pets = PETS;
     }
 
-    abrirModal(pet: Pet): void {
-        console.log("modal abierto");
-    }
+
 
     // Helper para evitar llamar a encodeURIComponent desde la plantilla
     getWhatsappLink(pet: Pet): string {
@@ -30,5 +31,14 @@ export class CarruselComponent implements OnInit {
         const text = `Hola! quiero adoptar a ${pet.name}`;
         return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     }
+
+    abrirModal(proyecto: any) {
+    const modalRef = this.modalService.open(ModalProyectoComponent,{
+      windowClass: 'modal-personalizado',
+      size: 'lg',
+      scrollable: true
+    });
+    modalRef.componentInstance.proyecto = proyecto;
+  }
 
 }
