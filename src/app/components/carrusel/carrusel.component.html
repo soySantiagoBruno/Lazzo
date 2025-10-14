@@ -14,56 +14,15 @@
             </div>
             <div class="d-flex justify-content-center" style="margin-top: 16px;">
               <button type="button" class="btn boton-mas-info me-2"
-                data-bs-toggle="modal"
-                [attr.data-bs-target]="'#modal-' + pet.id"
                 (click)="abrirModal(pet)">Mas info</button>
-
-              <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar">Adoptar</a>
+              
+               <a [href]="getWhatsappLink(pet)" 
+              class="btn boton-adoptar">Adoptar</a>
             </div>
           </div>
         </div>
 
-        <!-- Modal por mascota -->
-        <div class="modal fade" [id]="'modal-' + pet.id" tabindex="-1" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
-          <div class="modal-dialog container-md mx-auto">
-            <div class="modal-content">
-              <div class="card-modal mx-auto">
-                <img [src]="pet.image" class="card-modal-img" [alt]="pet.name">
-                <div class="card-modal-body">
-                  <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-                    <span style="width: 100%;">
-                      <h5 class="card-modal-title">{{ pet.name }}</h5>
-                      <p class="card-modal-ubicacion"><img class="m-0" src="assets/location.svg" alt="">{{ pet.location }}</p>
-                    </span>
-                    <span><img class="m-0" src="assets/share.svg" alt=""></span>
-                  </div>
-
-                  <div class="detalles-modal">
-                    <p><strong>Tamaño</strong>: {{ pet.size }}</p>
-                    <p><strong>Edad</strong>: {{ pet.age }}</p>
-                    <p><strong>Sexo</strong>: {{ pet.sex }}</p>
-                    <br>
-                    <p><strong>Descripción</strong>:</p>
-                    <p>{{ pet.description }}</p>
-                    <br>
-                    <p><strong>Contacto</strong></p>
-                    <p>Teléfono: {{ pet.contact.phone }}</p>
-                    <p>Correo: {{ pet.contact.email }}</p>
-                  </div>
-
-                  <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
-                    <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar mb-2">Adoptar</a>
-
-                    <button type="button" class="btn boton-cerrar" data-bs-dismiss="modal">
-                      <!-- icono -->
-                      Cerrar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
     </div>

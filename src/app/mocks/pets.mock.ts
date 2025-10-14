@@ -25,7 +25,7 @@ export const PETS: Pet[] = [
   {
     id: 'p2',
     name: 'Luna',
-    image: 'assets/gata1.jpeg',
+    image: 'assets/perro.png',
     location: 'Buenos Aires-AR',
     size: 'Pequeño',
     age: '1 año',
@@ -36,7 +36,7 @@ export const PETS: Pet[] = [
   {
     id: 'p3',
     name: 'Max',
-    image: 'assets/perro2.jpg',
+    image: 'assets/perro.png',
     location: 'Córdoba-AR',
     size: 'Grande',
     age: '5 años',
@@ -47,7 +47,7 @@ export const PETS: Pet[] = [
   {
     id: 'p4',
     name: 'Mia',
-    image: 'assets/gata2.jpg',
+    image: 'assets/perro.png',
     location: 'Rosario-AR',
     size: 'Pequeño',
     age: '2 años',
@@ -58,7 +58,7 @@ export const PETS: Pet[] = [
   {
     id: 'p5',
     name: 'Thor',
-    image: 'assets/perro3.jpg',
+    image: 'assets/perro.png',
     location: 'Mendoza-AR',
     size: 'Mediano',
     age: '4 años',
@@ -69,7 +69,7 @@ export const PETS: Pet[] = [
   {
     id: 'p6',
     name: 'Nala',
-    image: 'assets/gata3.jpg',
+    image: 'assets/perro.png',
     location: 'Salta-AR',
     size: 'Pequeño',
     age: '3 años',

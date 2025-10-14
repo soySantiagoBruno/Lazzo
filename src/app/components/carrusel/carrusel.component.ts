@@ -32,13 +32,15 @@ export class CarruselComponent implements OnInit {
         return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     }
 
-    abrirModal(proyecto: any) {
+    abrirModal(pet: any) {
+      console.log(pet);
+      
     const modalRef = this.modalService.open(CartaComponent,{
-      windowClass: 'modal-personalizado',
+      
       size: 'lg',
       scrollable: true
     });
-    modalRef.componentInstance.proyecto = proyecto;
+    modalRef.componentInstance.pet = pet;
   }
 
 }
