@@ -28,7 +28,7 @@
         <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
           <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar mb-2">Adoptar</a>
 
-          <button type="button" class="btn boton-cerrar" data-bs-dismiss="modal">
+          <button type="button" class="btn boton-cerrar" (click)="cerrarModal()">
             <!-- icono -->
             Cerrar
           </button>
