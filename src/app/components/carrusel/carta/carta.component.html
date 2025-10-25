@@ -1,15 +1,20 @@
-<!-- Modal por mascota -->       
-<div class="modal-dialog container-md mx-auto">
-  <div class="modal-content">
-    <div class="card-modal mx-auto">
-      <img [src]="pet.image" class="card-modal-img" [alt]="pet.name">
-      <div class="card-modal-body">
+<div class="card mx-auto">
+
+  <div class="row g-lg-3 align-items-center">
+    
+    <div class="col-lg-5 text-center">
+      <img [src]="pet.image" class="img-fluid rounded-start" [alt]="pet.name">
+    </div>
+
+    <div class="col-lg-7">
+      <div class="card-body">
+        <!-- info principal -->
         <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-          <span style="width: 100%;">
-            <h5 class="card-modal-title">{{ pet.name }}</h5>
-            <p class="card-modal-ubicacion"><img class="m-0" src="assets/location.svg" alt="">{{ pet.location }}</p>
+          <span>
+            <h5 class="card-title">{{ pet.name }}</h5>
+            <p class="card-text">{{ pet.location }}</p>
           </span>
-          <span><img class="m-0" src="assets/share.svg" alt=""></span>
+          <span><img src="assets/share.svg" alt=""></span>
         </div>
 
         <div class="detalles-modal">
@@ -25,16 +30,18 @@
           <p>Correo: {{ pet.contact.email }}</p>
         </div>
 
-        <div class="d-flex flex-column justify-content-center" style="margin-top: 16px;">
-          <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar mb-2">Adoptar</a>
 
-          <button type="button" class="btn boton-cerrar" (click)="cerrarModal()">
-            <!-- icono -->
-            Cerrar
-          </button>
-        </div>
       </div>
     </div>
+
   </div>
+
+  <!-- botones -->
+  <div class="d-flex justify-content-center align-items-center" style="margin:16px 0 0; gap:12px;">
+    <button type="button" class="btn boton-mas-info" (click)="cerrarModal()">Cerrar</button>
+    <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar">Adoptar</a>
+  </div>
+
+
+
 </div>
-        

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { InfoMascotaComponent } from '../info-mascota/info-mascota.component';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { isPlatformBrowser, NgFor, NgIf, NgStyle } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartaComponent } from './carta/carta.component';
 import { Pet, PETS } from '../../mocks/pets.mock';
@@ -13,13 +13,26 @@ import { Pet, PETS } from '../../mocks/pets.mock';
   imports: [InfoMascotaComponent, NgIf, NgFor, NgStyle, CartaComponent],
 })
 export class CarruselComponent implements OnInit {
-  constructor(private modalService: NgbModal) {}
+  AUTO_OPEN_MODAL: any = true;
+  constructor(private modalService: NgbModal,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+  }
 
   pets: Pet[] = [];
-  // ...existing code...
+
 
   ngOnInit(): void {
     this.pets = PETS;
+    /* esto despues borrarlo */
+    if (isPlatformBrowser(this.platformId)) {
+      // solo se ejecuta en el navegador
+      this.abrirModal(this.pets[0]);
+    }
+  }
+
+  ngAfterViewInit(){
+    
   }
 
   // Helper para evitar llamar a encodeURIComponent desde la plantilla
@@ -34,6 +47,7 @@ export class CarruselComponent implements OnInit {
     const modalRef = this.modalService.open(CartaComponent, {
       size: 'lg',
       scrollable: true,
+      windowClass: 'modal-sin-margen' 
     });
     modalRef.componentInstance.pet = pet;
   }

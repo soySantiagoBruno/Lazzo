@@ -1,6 +1,6 @@
+
 .card{
     padding: 16px;
-    width: 300px;
 
     border-radius: 22px;
     background: var(--cards-gradient, linear-gradient(237deg, rgba(163, 12, 176, 0.20) 26.61%, rgba(17, 17, 17, 0.04) 59.46%), linear-gradient(0deg, rgba(51, 51, 51, 0.50) 0%, rgba(51, 51, 51, 0.50) 100%), linear-gradient(156deg, #B75016 22.53%, #22170F 89.17%));
@@ -26,15 +26,6 @@
     font-size: 28px; font-weight: 800;
     color: white;
     font-family: "Plus Jakarta Sans";
-}
-
-/*Carta*/
-.card{
-    padding: 16px;
-    width: 300px;
-
-    border-radius: 22px;
-    background: var(--cards-gradient, linear-gradient(237deg, rgba(163, 12, 176, 0.20) 26.61%, rgba(17, 17, 17, 0.04) 59.46%), linear-gradient(0deg, rgba(51, 51, 51, 0.50) 0%, rgba(51, 51, 51, 0.50) 100%), linear-gradient(156deg, #B75016 22.53%, #22170F 89.17%));
 }
 
 .card img{
@@ -173,4 +164,14 @@
     background: #E5A700 !important;
     padding: 8px 16px;
 
+}
+
+.card-body {
+  height: 100%;
+}
+
+.detalles-modal {
+  max-height: 300px; /* Ajusta este valor según tus necesidades */
+  overflow-y: auto;
+  padding-right: 10px;
 }
