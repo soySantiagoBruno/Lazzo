@@ -13,10 +13,19 @@ import { Pet, PETS } from '../../mocks/pets.mock';
   imports: [NgFor],
 })
 export class CarruselComponent implements OnInit {
+  pets: Pet[] = [];
+
+  fondos = [
+  'linear-gradient(135deg, #1F1C2C, #928DAB)',
+  'linear-gradient(145deg, #F7971E, #FFD200)',
+  'linear-gradient(145deg, #43C6AC, #191654)',
+  'linear-gradient(145deg, #cc2b5e, #753a88)',
+  'linear-gradient(145deg, #2193B0, #6DD5ED)'
+];
+
 
   constructor(private modalService: NgbModal){}
 
-  pets: Pet[] = [];
 
 
   ngOnInit(): void {
