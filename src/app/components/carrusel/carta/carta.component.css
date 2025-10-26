@@ -1,9 +1,32 @@
+.modal-mascota{
+    background-color: red;
 
+    display: flex;
+}
+
+.detalles-modal {
+    color: var(--Black, #222);
+    /* cuerpos y textos pequeños/Textos pequeños bold */
+    font-family: "Plus Jakarta Sans";
+    font-size: 1rem;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.detalles-modal p {
+    margin: 0px;
+}
+
+
+/* ANTES DE CRISTO */
 .card{
     padding: 16px;
 
-    border-radius: 22px;
-    background: var(--cards-gradient, linear-gradient(237deg, rgba(163, 12, 176, 0.20) 26.61%, rgba(17, 17, 17, 0.04) 59.46%), linear-gradient(0deg, rgba(51, 51, 51, 0.50) 0%, rgba(51, 51, 51, 0.50) 100%), linear-gradient(156deg, #B75016 22.53%, #22170F 89.17%));
+    background-color:blueviolet;
+
 }
 
 .card img{
@@ -28,27 +51,11 @@
     font-family: "Plus Jakarta Sans";
 }
 
-.card img{
-    border-radius: 20px;
-}
 
-.card-text{
-    color: white;
-    font-family: "Plus Jakarta Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-}
 
-.card-body{
-    padding: 0px;
-}
+/* CHEKEADO */
 
-.card-title{
-    font-size: 28px; font-weight: 800;
-    color: white;
-    font-family: "Plus Jakarta Sans";
-}
+
 
 .boton-mas-info{
     border-radius: 32px;
@@ -125,22 +132,6 @@
 
 .card-modal-ubicacion img{
     width: 20px;
-}
-
-.detalles-modal {
-    color: var(--Black, #222);
-    /* cuerpos y textos pequeños/Textos pequeños bold */
-    font-family: "Plus Jakarta Sans";
-    font-size: 13px;
-    font-style: normal;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.detalles-modal p {
-    margin: 0px;
 }
 
 

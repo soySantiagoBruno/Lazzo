@@ -44,10 +44,14 @@ export class CarruselComponent implements OnInit {
 
   abrirModal(pet: any) {
 
+    /* crea un modal con la estructura: .modal -> .modal-dialog -> .modal-content */
     const modalRef = this.modalService.open(CartaComponent, {
-      size: 'lg',
-      scrollable: true,
-      windowClass: 'modal-sin-margen' 
+      
+      /* esto agrega clases  al div de .modal*/
+      windowClass: 'modal-xl d-flex justify-content-center ', /* en escritorio, el modal es large */
+
+      /* esto agregar clases al div de .modal-dialog */
+      modalDialogClass: 'modal-fullscreen-xl-down m-0' /* en mobile el modal es de pantalla completa */
     });
     modalRef.componentInstance.pet = pet;
   }

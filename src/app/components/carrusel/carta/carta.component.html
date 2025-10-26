@@ -1,47 +1,47 @@
-<div class="card mx-auto">
+<!--recordar que encima de esto se genera .modal, .modal-dialog y .modal-content -->
 
-  <div class="row g-lg-3 align-items-center">
-    
-    <div class="col-lg-5 text-center">
-      <img [src]="pet.image" class="img-fluid rounded-start" [alt]="pet.name">
+<div class="modal-mascota card">
+
+  <div class="row g-0 g-md-3">
+
+    <!-- Columna foto mascota -->
+    <div class="col-md-6 text-center" style="background-color: red;">
+      <img [src]="pet.image" class="img-fluid rounded-start w-80" [alt]="pet.name">
     </div>
 
-    <div class="col-lg-7">
+    <!-- Columna detalles mascota -->
+    <div class="col-md-6">
+
       <div class="card-body">
-        <!-- info principal -->
-        <div class="d-flex justify-content-between" style="padding: 0px;margin-top: 24px;">
-          <span>
-            <h5 class="card-title">{{ pet.name }}</h5>
-            <p class="card-text">{{ pet.location }}</p>
-          </span>
-          <span><img src="assets/share.svg" alt=""></span>
-        </div>
+
+        <h5 class="card-title">{{ pet.name }}</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+          This content is a little bit longer.</p>
 
         <div class="detalles-modal">
           <p><strong>Tamaño</strong>: {{ pet.size }}</p>
           <p><strong>Edad</strong>: {{ pet.age }}</p>
           <p><strong>Sexo</strong>: {{ pet.sex }}</p>
-          <br>
           <p><strong>Descripción</strong>:</p>
           <p>{{ pet.description }}</p>
-          <br>
           <p><strong>Contacto</strong></p>
           <p>Teléfono: {{ pet.contact.phone }}</p>
           <p>Correo: {{ pet.contact.email }}</p>
         </div>
 
-
+        
       </div>
+
+      
+    </div>
+    
+    <!-- botones -->
+    <div class="col-md-12 d-flex justify-content-center align-items-center" style="margin:16px 0 0; gap:12px;">
+      <button type="button" class="btn btn-lg boton-mas-info" (click)="cerrarModal()">Cerrar</button>
+      <a [href]="getWhatsappLink(pet)" class="btn  btn-lg boton-adoptar">Adoptar</a>
     </div>
 
+
   </div>
-
-  <!-- botones -->
-  <div class="d-flex justify-content-center align-items-center" style="margin:16px 0 0; gap:12px;">
-    <button type="button" class="btn boton-mas-info" (click)="cerrarModal()">Cerrar</button>
-    <a [href]="getWhatsappLink(pet)" class="btn boton-adoptar">Adoptar</a>
-  </div>
-
-
 
 </div>
