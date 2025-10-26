@@ -10,29 +10,17 @@ import { Pet, PETS } from '../../mocks/pets.mock';
   standalone: true,
   templateUrl: './carrusel.component.html',
   styleUrl: './carrusel.component.css',
-  imports: [InfoMascotaComponent, NgIf, NgFor, NgStyle, CartaComponent],
+  imports: [NgFor],
 })
 export class CarruselComponent implements OnInit {
-  AUTO_OPEN_MODAL: any = true;
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-  }
+
+  constructor(private modalService: NgbModal){}
 
   pets: Pet[] = [];
 
 
   ngOnInit(): void {
     this.pets = PETS;
-    /* esto despues borrarlo */
-    if (isPlatformBrowser(this.platformId)) {
-      // solo se ejecuta en el navegador
-      this.abrirModal(this.pets[0]);
-    }
-  }
-
-  ngAfterViewInit(){
-    
   }
 
   // Helper para evitar llamar a encodeURIComponent desde la plantilla
