@@ -1,12 +1,28 @@
-.modal-mascota{
-    background-color: red;
+.card {
+    padding: 16px;
 
-    display: flex;
 }
 
-.detalles-modal {
+.card-body {
+    padding: 0px;
+}
+
+.card-title {
+    font-size: 28px;
+    font-family: "Plus Jakarta Sans";
+    font-weight: 800;
     color: var(--Black, #222);
-    /* cuerpos y textos pequeños/Textos pequeños bold */
+    font-style: normal;
+    line-height: normal;
+}
+
+
+.detalles-modal {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+
+    color: var(--Black, #222);
     font-family: "Plus Jakarta Sans";
     font-size: 1rem;
     font-style: normal;
@@ -14,136 +30,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 0px;
 }
 
 .detalles-modal p {
-    margin: 0px;
+    margin: 4px 0;
 }
-
-
-/* ANTES DE CRISTO */
-.card{
-    padding: 16px;
-
-    background-color:blueviolet;
-
-}
-
-.card img{
-    border-radius: 20px;
-}
-
-.card-text{
-    color: white;
-    font-family: "Plus Jakarta Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-}
-
-.card-body{
-    padding: 0px;
-}
-
-.card-title{
-    font-size: 28px; font-weight: 800;
-    color: white;
-    font-family: "Plus Jakarta Sans";
-}
-
-
-
-/* CHEKEADO */
-
-
-
-.boton-mas-info{
-    border-radius: 32px;
-    border: 2px solid var(--White, #F1F1F1);
-    color: white;
-}
-
-
-
-/*modal*/
-.modal{
-    margin: 0px !important;
-    backdrop-filter: blur(10px);
-}
-
-.modal-dialog{
-    padding: 0px !important;
-    max-height: 100% !important;
-}
-
-.card-modal {
-    padding: 32px 16px 24px 16px;
-
-    border-radius: 22px;
-
-    
-
-    background-color: white;
-    }
-    
-.card-modal-body {
-    padding: 0px !important;
-    margin: 0px;
-}
-
-.card-modal-text {
-    color: black;
-    font-family: "Plus Jakarta Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-}
-
-.card-modal img {
-    border-radius: 20px;
-    display: block;
-    margin: auto;
-    width: 100%;
-}
-
-
-.card-modal-title {
-    color: var(--Black, #222);
-    /* Titles/Titulos extra grandes */
-    font-family: "Plus Jakarta Sans";
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-}
-
-.card-modal-ubicacion {
-    display: flex;
-
-    color: var(--Black, #222);
-    /* Titles/Titulos pequeños */
-    font-family: "Plus Jakarta Sans";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    width: 100%;
-}
-
-.card-modal-ubicacion img{
-    width: 20px;
-}
-
 
 .boton-cerrar {
     --bs-border-radius: 48px;
 
     display: flex;
-    margin: 24px 0px 0px 0px;
-    padding:8px 16px;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     align-self: stretch;
 }
 
@@ -155,14 +55,4 @@
     background: #E5A700 !important;
     padding: 8px 16px;
 
-}
-
-.card-body {
-  height: 100%;
-}
-
-.detalles-modal {
-  max-height: 300px; /* Ajusta este valor según tus necesidades */
-  overflow-y: auto;
-  padding-right: 10px;
 }
