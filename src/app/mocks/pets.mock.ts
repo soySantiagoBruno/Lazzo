@@ -8,6 +8,7 @@ export interface Pet {
   sex: string;
   description: string;
   contact: { phone: string; email: string; whatsapp?: string };
+  background?: string;
 }
 
 export const PETS: Pet[] = [

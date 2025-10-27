@@ -37,6 +37,12 @@ h3{
 
     border-radius: 22px;
     background: white;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card img{
@@ -47,6 +53,14 @@ h3{
     object-position: center;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+}
+
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px 12px 0 0;
 }
 
 .card-text{

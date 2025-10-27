@@ -1,4 +1,4 @@
-import { MascotaRegisterDto } from "./mascota-register-dto";
+import { MascotaRegisterDto } from "./pet-dto";
 
 export interface UsuarioRegisterDto {
     uid?: string;

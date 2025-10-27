@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
-import { MascotaRegisterDto } from '../models/mascota-register-dto';
+import { MascotaRegisterDto } from '../models/pet-dto';
 import { arrayUnion, Firestore } from '@angular/fire/firestore';
 import { Auth, user } from '@angular/fire/auth';
 import { UserService } from './user.service';

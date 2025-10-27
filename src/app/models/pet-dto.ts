@@ -11,4 +11,6 @@ export interface MascotaRegisterDto {
     urlImagen?: string;
 
     uidMascota: string; // Indica a que usuario pertenece
+
+    background?: string;
 }
