@@ -25,6 +25,8 @@ export class CarruselComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
+    /* Con esto se va a generar un background dinamica en base a las imagenes */
     if (!isPlatformBrowser(this.platformId)) return; // evita errores en SSR
 
     const colorThief = new ColorThief();
