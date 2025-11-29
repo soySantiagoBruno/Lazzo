@@ -26,6 +26,7 @@ export class FiltroComponent implements OnInit {
     this.formularioFiltro = this.form.group({
       provincia: [''],
       departamento: [{ value: '', disabled: true }], // <-- disabled hasta elegir provincia
+      tipo: [''],
       sexo: [''],
       tamaño: [''],
       edad: ['']
@@ -37,7 +38,7 @@ export class FiltroComponent implements OnInit {
   ngOnInit() {
     // Cargo provincias y departamentos
     this.ubicacionService.getProvincias().subscribe(p => this.provincias = p || []);
-    
+
     this.ubicacionService.getDepartamentos().subscribe(d => {
       this.departamentos = d || [];
       // si ya hay provincia seleccionada (ej. por rehidratación), aplica filtro
