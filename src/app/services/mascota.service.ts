@@ -36,7 +36,7 @@ export class MascotaService {
       tamanio: nuevaMascota.tamanio,
       edad: nuevaMascota.edad,
       provincia: nuevaMascota.provincia,
-      departamento: nuevaMascota.municipio,
+      departamento: nuevaMascota.departamento,
       urlImagen: nuevaMascota.urlImagen,
       uidAdoptante: this.auth.currentUser?.uid
     });

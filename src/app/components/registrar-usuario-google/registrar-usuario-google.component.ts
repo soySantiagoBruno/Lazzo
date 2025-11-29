@@ -14,13 +14,13 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrl: './registrar-usuario-google.component.css'
 })
 
-/* Esto sirve para terminar de completar el registro de un usuario que se loguea mediante Google, esto debido a que además de un correo (que nos proporciona Google), también necesitamos otros datos como nombre, celular, provincia y municipio.
+/* Esto sirve para terminar de completar el registro de un usuario que se loguea mediante Google, esto debido a que además de un correo (que nos proporciona Google), también necesitamos otros datos como nombre, celular, provincia y departamento.
  */
 export class RegistrarUsuarioGoogleComponent {
 
   // Esto será usado en el dropdown de ubicación
   provincias: string[] = [];
-  municipios: string[] = [];
+  departamentos: string[] = [];
   tocado: boolean = false;
 
   formularioRegisterGoogle: FormGroup;
@@ -66,8 +66,8 @@ export class RegistrarUsuarioGoogleComponent {
     })
   }
 
-  cargarMunicipios(provincia: string){
-    this.ubicacionApiService.getMunicipios(provincia).subscribe(data => this.municipios = data
+  cargarDepartamentos(provincia: string){
+    this.ubicacionApiService.getDepartamentos(provincia).subscribe(data => this.departamentos = data
     )
   }
 
@@ -77,18 +77,18 @@ export class RegistrarUsuarioGoogleComponent {
       const provinciaControl = this.formularioRegisterGoogle.get('provincia');
       
       if (provinciaControl?.dirty && provinciaControl.value) {
-        // Habilitar el campo de municipio si la provincia fue modificada y tiene un valor
-        this.formularioRegisterGoogle.get('municipio')?.enable();
-        this.cargarMunicipios(provinciaControl.value);
+        // Habilitar el campo de departamento si la provincia fue modificada y tiene un valor
+        this.formularioRegisterGoogle.get('departamento')?.enable();
+        this.cargarDepartamentos(provinciaControl.value);
         this.tocado = true;
       } else {
-        // Deshabilitar el campo de municipio si no se ha seleccionado una provincia
-        this.formularioRegisterGoogle.get('municipio')?.disable();
+        // Deshabilitar el campo de departamento si no se ha seleccionado una provincia
+        this.formularioRegisterGoogle.get('departamento')?.disable();
       }
     });
 
-    // Inicialmente deshabilitar el campo de municipio
-    this.formularioRegisterGoogle.get('municipio')?.disable();
+    // Inicialmente deshabilitar el campo de departamento
+    this.formularioRegisterGoogle.get('departamento')?.disable();
   }
 
 }

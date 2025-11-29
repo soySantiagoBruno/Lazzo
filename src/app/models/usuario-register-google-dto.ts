@@ -6,7 +6,7 @@ export interface UsuarioRegisterGoogleDto {
     // Datos de contacto
     celular: Number;
     provincia: string;
-    municipio: string;
+    departamento: string;
     tieneWhatsapp: boolean;
     
     mascotasEnAdopcion?: Array<String>; // Strings con el uuid de la/s mascota/s

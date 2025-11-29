@@ -59,7 +59,7 @@ export class PublicarMascotaComponent implements OnInit{
     })
   }
 
-  cargarMunicipios(provincia: string){
+  cargarDepartamentos(provincia: string){
     // getDepartamentos returns all departamentos; filter by idProvincia
     this.ubicacionService.getDepartamentos().subscribe(data => {
       this.departamentos = (data || []).filter((d: any) => d.idProvincia === provincia || String(d.idProvincia) === String(provincia));
@@ -72,17 +72,17 @@ export class PublicarMascotaComponent implements OnInit{
       const provinciaControl = this.publicarMascotaForm.get('provincia');
       
       if (provinciaControl?.dirty && provinciaControl.value) {
-        // Habilitar el campo de municipio si la provincia fue modificada y tiene un valor
+        // Habilitar el campo de departamento si la provincia fue modificada y tiene un valor
         this.publicarMascotaForm.get('departamento')?.enable();
-        this.cargarMunicipios(provinciaControl.value);
+        this.cargarDepartamentos(provinciaControl.value);
         this.tocado = true;
       } else {
-        // Deshabilitar el campo de municipio si no se ha seleccionado una provincia
+        // Deshabilitar el campo de departamento si no se ha seleccionado una provincia
         this.publicarMascotaForm.get('departamento')?.disable();
       }
     });
 
-    // Inicialmente deshabilitar el campo de municipio
+    // Inicialmente deshabilitar el campo de departamento
     this.publicarMascotaForm.get('departamento')?.disable();
   }
 

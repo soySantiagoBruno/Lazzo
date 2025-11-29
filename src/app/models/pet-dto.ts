@@ -6,7 +6,7 @@ export interface MascotaRegisterDto {
     tamanio: string;
     edad: string;
     provincia: string;
-    municipio: string;
+    departamento: string;
     descripcion: string;
     urlImagen?: string;
 

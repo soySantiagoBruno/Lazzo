@@ -39,15 +39,15 @@
             </div>
             
             <div class="mb-3" *ngIf="tocado">
-                <!--Municipio-->
+                <!--Departamento-->
                 <select 
-                formControlName="municipio" 
+                formControlName="departamento" 
                 class="dropdown-toggle ms-1 input-whatsapp w-100"
                 
                 >
-                    <option class="dropdown-item" value="" disabled selected>Municipio</option>
+                    <option class="dropdown-item" value="" disabled selected>Departamento</option>
     
-                    <option class="dropdown-item" *ngFor="let municipio of municipios" [ngValue]="municipio">{{municipio}}</option>
+                    <option class="dropdown-item" *ngFor="let departamento of departamentos" [ngValue]="departamento">{{departamento}}</option>
                 </select>
             </div>
 

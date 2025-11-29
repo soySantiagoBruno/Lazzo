@@ -9,7 +9,7 @@ export interface UsuarioRegisterDto {
     celular?: Number;
     email: string;
     provincia: string;
-    municipio: string;
+    departamento: string;
     tieneWhatsapp: boolean;
 
     password: string;

@@ -17,7 +17,7 @@ export class RegistrarUsuarioComponent implements OnInit{
 
   // Esto será usado en el dropdown de ubicación
   provincias: string[] = [];
-  municipios: string[] = [];
+  departamentos: string[] = [];
   tocado: boolean = false;
 
   formularioRegister: FormGroup;
@@ -64,8 +64,8 @@ export class RegistrarUsuarioComponent implements OnInit{
     })
   }
 
-  cargarMunicipios(provincia: string){
-    this.ubicacionApiService.getMunicipios(provincia).subscribe(data => this.municipios = data
+  cargarDepartamentos(provincia: string){
+    this.ubicacionApiService.getDepartamentos(provincia).subscribe(data => this.departamentos = data
     )
   }
 
@@ -75,18 +75,18 @@ export class RegistrarUsuarioComponent implements OnInit{
       const provinciaControl = this.formularioRegister.get('provincia');
       
       if (provinciaControl?.dirty && provinciaControl.value) {
-        // Habilitar el campo de municipio si la provincia fue modificada y tiene un valor
-        this.formularioRegister.get('municipio')?.enable();
-        this.cargarMunicipios(provinciaControl.value);
+        // Habilitar el campo de departamento si la provincia fue modificada y tiene un valor
+        this.formularioRegister.get('departamento')?.enable();
+        this.cargarDepartamentos(provinciaControl.value);
         this.tocado = true;
       } else {
-        // Deshabilitar el campo de municipio si no se ha seleccionado una provincia
-        this.formularioRegister.get('municipio')?.disable();
+        // Deshabilitar el campo de departamento si no se ha seleccionado una provincia
+        this.formularioRegister.get('departamento')?.disable();
       }
     });
 
-    // Inicialmente deshabilitar el campo de municipio
-    this.formularioRegister.get('municipio')?.disable();
+    // Inicialmente deshabilitar el campo de departamento
+    this.formularioRegister.get('departamento')?.disable();
   }
 
 }

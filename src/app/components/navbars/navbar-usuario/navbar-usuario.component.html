@@ -6,7 +6,7 @@
             <img src="assets/isotipo.png" alt="Logo" height="63">
         </a>
 
-        <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{usuarioActual.municipio}}, {{usuarioActual.provincia}}</span>
+        <span class="ubicacion" ><img src="assets/location-empty.svg" alt=""> {{usuarioActual.departamento}}, {{usuarioActual.provincia}}</span>
 
         <a type="button" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#modalUsuario">
             <img [src]="usuarioActual.urlImagenPerfil==null ? 'assets/perfil.png' : usuarioActual.urlImagenPerfil" alt="Imagen perfil" height="63" class="rounded-circle">
@@ -33,7 +33,7 @@
 
           <div class="container">
             <p class="fw-bold fs-3">{{usuarioActual.nombreCompleto}}</p>
-            <p>{{usuarioActual.municipio}}, {{usuarioActual.provincia}}</p>
+            <p>{{usuarioActual.departamento}}, {{usuarioActual.provincia}}</p>
           </div>
 
           <!--Botones-->

@@ -5,7 +5,6 @@ import { EditarUsuarioFormService } from '../../forms/editar-usuario-form.servic
 import { UserService } from '../../services/user.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
-import { UbicacionApiService } from '../../services/ubicacion-api.service';
 import { Auth, user } from '@angular/fire/auth';
 import { log } from 'console';
 import { UsuarioRegisterDto } from '../../models/usuario-register-dto';
@@ -25,13 +24,12 @@ export class EditarPerfilComponent implements OnInit{
 
    // Esto será usado en el dropdown de ubicación
    provincias: string[] = [];
-   municipios: string[] = [];
+   departamentos: string[] = [];
 
   constructor(
     private editarUsuarioFormService: EditarUsuarioFormService,
     private userService: UserService,
     private router: Router,
-    private ubicacionApiService: UbicacionApiService,
     private auth: Auth
   ){
     // Creo el formulario a usar para editar el usuario
@@ -43,10 +41,10 @@ export class EditarPerfilComponent implements OnInit{
     async ngOnInit(): Promise<void> {
       this.cargarProvincias();
 
-      // Cargo los municipios dinámicamente a medida que voy eligiendo una provincia
+      // Cargo los departamentos dinámicamente a medida que voy eligiendo una provincia
       this.formularioEditarUsuario.get('provincia')?.valueChanges.subscribe(() => {
         let provinciaElegida = this.formularioEditarUsuario.get('provincia');
-        this.cargarMunicipios(provinciaElegida?.value);
+        this.cargarDepartamentos(provinciaElegida?.value);
       })
 
 
@@ -59,7 +57,7 @@ export class EditarPerfilComponent implements OnInit{
             nombreCompleto: this.usuarioActual?.nombreCompleto,
             celular: this.usuarioActual?.celular,
             provincia: this.usuarioActual?.provincia,
-            municipio: this.usuarioActual?.municipio,
+            departamento: this.usuarioActual?.departamento,
             tieneWhatsapp: this.usuarioActual?.tieneWhatsapp
           });
       }) 
@@ -90,8 +88,8 @@ export class EditarPerfilComponent implements OnInit{
     })
   }
 
-  cargarMunicipios(provincia: string){
-    this.ubicacionApiService.getMunicipios(provincia).subscribe(data => this.municipios = data
+  cargarDepartamentos(provincia: string){
+    this.ubicacionApiService.getDepartamentos(provincia).subscribe(data => this.departamentos = data
     )
   }
 

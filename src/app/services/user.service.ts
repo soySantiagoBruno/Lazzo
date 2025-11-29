@@ -30,7 +30,7 @@ export class UserService {
           celular: usuario.celular,
           email: usuario.email,
           provincia: usuario.provincia,
-          municipio: usuario.municipio,
+          departamento: usuario.departamento,
           tieneWhatsapp: usuario.tieneWhatsapp,
           mascotasEnAdopcion: usuario.mascotasEnAdopcion || [] // Si no se especifican mascotas, guardar un array vacío
         });
@@ -102,7 +102,7 @@ export class UserService {
       nombreCompleto: usuario.nombreCompleto,
       celular: usuario.celular,
       provincia: usuario.provincia,
-      municipio: usuario.municipio,
+      departamento: usuario.departamento,
       tieneWhatsapp: usuario.tieneWhatsapp,
       mascotasEnAdopcion: usuario.mascotasEnAdopcion || [] // Si no se especifican mascotas, guardar un array vacío
     });
@@ -146,7 +146,7 @@ export class UserService {
       nombreCompleto: usuario.nombreCompleto,
       celular: usuario.celular,
       provincia: usuario.provincia,
-      municipio: usuario.municipio,
+      departamento: usuario.departamento,
       tieneWhatsapp: usuario.tieneWhatsapp,
     });
   }
@@ -181,7 +181,7 @@ export class UserService {
       celular: undefined,
       email: '',
       provincia: '',
-      municipio: '',
+      departamento: '',
       tieneWhatsapp: false,
       password: '',
       urlImagenPerfil:''
@@ -194,7 +194,7 @@ export class UserService {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       usuarioTraido.provincia = doc.data()['provincia']
-      usuarioTraido.municipio = doc.data()['municipio']
+      usuarioTraido.departamento = doc.data()['departamento']
       usuarioTraido.nombreCompleto = doc.data()['nombreCompleto']
       usuarioTraido.celular = doc.data()['celular']
       usuarioTraido.tieneWhatsapp = doc.data()['tieneWhatsapp']
