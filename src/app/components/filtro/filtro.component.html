@@ -17,7 +17,7 @@
   <div class="card card-body p-0">
     <div class="filtro">
 
-      <form (ngSubmit)="aplicarFiltro()">
+      <form [formGroup]="filtroMascotaForm" (ngSubmit)="aplicarFiltro()">
         <!--Ubicación-->
         <div class="d-flex gap-3 col-2 w-100">
           

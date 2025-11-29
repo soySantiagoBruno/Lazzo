@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { UbicacionService } from '../../services/ubicacion.service';
 
 
 @Component({
@@ -9,7 +10,18 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './filtro.component.html',
   styleUrl: './filtro.component.css'
 })
-export class FiltroComponent {
+export class FiltroComponent implements OnInit {
+
+  provincias: any[] = [];
+  departamentos: any[] = [];
+
+  constructor(private ubicacionService: UbicacionService) { }
+
+  ngOnInit() {
+  this.ubicacionService.getProvincias().subscribe(p => this.provincias = p);
+  this.ubicacionService.getDepartamentos().subscribe(d => this.departamentos = d);
+}
+
 
   ubicacion = new FormControl('');
 
