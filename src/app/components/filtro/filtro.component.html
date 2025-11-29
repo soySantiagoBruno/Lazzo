@@ -1,4 +1,3 @@
-
 <div class="col-md-8 mx-auto filtro-general gap-4 ">
   <button class="filtrar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
     aria-expanded="false" aria-controls="collapseExample">
@@ -6,7 +5,7 @@
   </button>
 
   <span class="ciudad fs-5">
-    <i style="color: #e5a700" class="bi bi-geo-alt-fill"></i> <span>{{ubicacion.value}}</span>
+    <i style="color: #e5a700" class="bi bi-geo-alt-fill"></i> <span></span>
     <i class="bi bi-caret-down-fill"></i>
   </span>
 
@@ -17,25 +16,25 @@
   <div class="card card-body p-0">
     <div class="filtro">
 
-      <form [formGroup]="filtroMascotaForm" (ngSubmit)="aplicarFiltro()">
+      <!-- uso del formulario -->
+      <form [formGroup]="formularioFiltro"  (ngSubmit)="aplicarFiltro()">
         <!--Ubicación-->
         <div class="d-flex gap-3 col-2 w-100">
           
           <div class="mb-3 col-6">
             <label for="provincia" class="form-label">Provincia</label>
-            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+            <select class="form-select form-select-lg mb-3" formControlName="provincia">
               <option selected>Todas</option>
-              <option value="1">Buenos Aires</option>
-              <option value="2">CABA</option>
+              <option *ngFor="let provincia of provincias" [ngValue]="provincia.id">{{provincia.nombre}}</option>
+              
             </select>
           </div>
   
           <div class="mb-3 col-6">
             <label for="departamento" class="form-label">Departamento</label>
-            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-              <option selected>Todos</option>
-              <option value="1">Guaymallen</option>
-              <option value="2">Alvear</option>
+            <select class="form-select form-select-lg mb-3" formControlName="departamento" aria-label="Departamento">
+              <option value="">Todos</option>
+              <option *ngFor="let departamento of departamentosFiltrados" [value]="departamento.id">{{ departamento.nombre }}</option>
             </select>
           </div>
 

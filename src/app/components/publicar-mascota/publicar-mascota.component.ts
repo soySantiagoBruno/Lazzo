@@ -51,7 +51,7 @@ export class PublicarMascotaComponent implements OnInit{
   }
 
 
-
+// TO-DO cambiar los service de provincia y municipio (DEPARTAMENTO) por el nuevo service3
   cargarProvincias(): void{
     this.ubicacionApiService.getProvincias().subscribe((data: string[]) =>{
       this.provincias = data
