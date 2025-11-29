@@ -1,76 +1,67 @@
-<p class="filtro-general gap-4">
-  <span class="ciudad fs-5"
-    ><i style="color: #e5a700" class="bi bi-geo-alt-fill"></i> San Rafael
-    <i class="bi bi-caret-down-fill"></i
-  ></span>
-  <button
-    class="filtrar"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#collapseExample"
-    aria-expanded="false"
-    aria-controls="collapseExample"
-  >
-    <i class="bi bi-filter-circle fs-5"></i> Filtrar
-  </button>
-</p>
 
-<div class="collapse" id="collapseExample">
+<div class="col-md-8 mx-auto filtro-general gap-4 ">
+  <button class="filtrar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample">
+    <i class="bi bi-filter-circle fs-5"></i> Filtrar mascotas
+  </button>
+
+  <span class="ciudad fs-5">
+    <i style="color: #e5a700" class="bi bi-geo-alt-fill"></i> <span>{{ubicacion.value}}</span>
+    <i class="bi bi-caret-down-fill"></i>
+  </span>
+
+</div>
+
+<!-- al expandir el filtro -->
+<div class="collapse col-md-8 mx-auto " id="collapseExample">
   <div class="card card-body p-0">
     <div class="filtro">
-      <form action="">
+
+      <form (ngSubmit)="aplicarFiltro()">
         <!--Ubicación-->
-        <div class="mb-3">
-          <label for="formGroupExampleInput" class="form-label"
-            >Ubicación</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Chubut"
-          />
+        <div class="d-flex gap-3 col-2 w-100">
+          
+          <div class="mb-3 col-6">
+            <label for="provincia" class="form-label">Provincia</label>
+            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+              <option selected>Todas</option>
+              <option value="1">Buenos Aires</option>
+              <option value="2">CABA</option>
+            </select>
+          </div>
+  
+          <div class="mb-3 col-6">
+            <label for="departamento" class="form-label">Departamento</label>
+            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+              <option selected>Todos</option>
+              <option value="1">Guaymallen</option>
+              <option value="2">Alvear</option>
+            </select>
+          </div>
+
         </div>
 
+
         <!--Sexo-->
+
         <div class="mb-3">
           <label for="formGroupExampleInput2" class="form-label">Sexo</label>
-          <div class="d-flex gap-4">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-              />
-              <label class="form-check-label" for="flexRadioDefault1">
-                Macho <i class="material-icons">male</i>
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault2"
-                checked
-              />
-              <label class="form-check-label" for="flexRadioDefault2">
-                Hembra <i class="material-icons">female</i>
-              </label>
-            </div>
-          </div>
+
+          <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+            <option selected>Todos</option>
+            <option value="1">Macho</option>
+            <option value="2">Hembra</option>
+          </select>
         </div>
+
+
 
         <!--Tamaño-->
         <div class="mb-3">
           <label for="formGroupExampleInput2" class="form-label">Tamaño</label>
 
-          <select
-            class="form-select form-select-lg mb-3"
-            aria-label="Large select example"
-          >
-            <option selected></option>
+          <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+            <option selected>Todos</option>
             <option value="1">Chico</option>
             <option value="2">Mediano</option>
             <option value="3">Grande</option>
@@ -81,11 +72,8 @@
         <div class="mb-3">
           <label for="formGroupExampleInput2" class="form-label">Edad</label>
 
-          <select
-            class="form-select form-select-lg mb-3"
-            aria-label="Large select example"
-          >
-            <option selected></option>
+          <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+            <option selected>Todos</option>
             <option value="1">Cachorros</option>
             <option value="2">Jovenes (2-4 años)</option>
             <option value="3">Adultos (5-9 años)</option>
@@ -94,9 +82,16 @@
         </div>
 
         <div class="boton-filtro d-flex">
-          <i class="material-icons">delete</i>
-          <input type="reset" class="boton-filtro" />
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check-lg"></i> Aplicar
+          </button>
+
+          <button type="reset" class="btn btn-secondary">
+            <i class="bi bi-trash"></i> Restablecer
+          </button>
         </div>
+
+
       </form>
     </div>
   </div>

@@ -2,7 +2,6 @@
     margin: 0px;
     padding: 16px;
 
-    border-radius: 4px 40px 40px 40px;
     border: 2.5px solid var(--Black, #222);
     background: var(--White, #F1F1F1);
 
@@ -32,7 +31,7 @@
     padding: 10px 0px !important;
     display: flex;
     border-radius: 40px !important;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
 
