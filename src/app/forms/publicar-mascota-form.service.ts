@@ -14,11 +14,10 @@ export class PublicarMascotaFormService {
       tamanio: new FormControl('', [Validators.required]),
       edad: new FormControl('', [Validators.required]),
       provincia: new FormControl('', [Validators.required]),
-      municipio: new FormControl('', [Validators.required]),
+      departamento: new FormControl('', [Validators.required]), // <-- rename municipio -> departamento
       descripcion: new FormControl('', [Validators.required]),
       urlImagen: new FormControl('', [Validators.required]),
       uidAdoptante: new FormControl('', [Validators.required]),      
-
     });
   }
 

@@ -102,21 +102,21 @@
                 <!--Provincia-->
                 <select formControlName="provincia" class="dropdown-toggle input-whatsapp w-100">
                     <option class="dropdown-item" value="" disabled selected>Provincia</option>
-                    <option class="dropdown-item" *ngFor="let provincia of provincias" [ngValue]="provincia">{{provincia}}</option>
+                    <option class="dropdown-item" *ngFor="let provincia of provincias" [ngValue]="provincia.id">{{provincia.nombre}}</option>
                 </select>
  
             </div>
             
             <div class="mb-3" *ngIf="tocado">
-                <!--Municipio-->
+                <!--departamento-->
                 <select 
-                formControlName="municipio" 
+                formControlName="departamento" 
                 class="dropdown-toggle ms-1 input-whatsapp w-100"
                 
                 >
-                    <option class="dropdown-item" value="" disabled selected>Municipio</option>
+                    <option class="dropdown-item" value="" disabled selected>departamento</option>
     
-                    <option class="dropdown-item" *ngFor="let municipio of municipios" [ngValue]="municipio">{{municipio}}</option>
+                    <option class="dropdown-item" *ngFor="let departamento of departamentos" [ngValue]="departamento.id">{{departamento.nombre}}</option>
                 </select>
             </div>
             

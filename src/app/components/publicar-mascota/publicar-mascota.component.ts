@@ -3,10 +3,12 @@ import { FooterDarkComponent } from "../footers/footer-dark/footer-dark.componen
 import { NavbarUsuarioComponent } from "../navbars/navbar-usuario/navbar-usuario.component";
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PublicarMascotaFormService } from '../../forms/publicar-mascota-form.service';
-import { UbicacionApiService } from '../../services/ubicacion-api.service';
+import { UbicacionService } from '../../services/ubicacion.service';
 import { NgForOf, NgIf } from '@angular/common';
 import { MascotaService } from '../../services/mascota.service';
 import { Router } from '@angular/router';
+import { ProvinciaDto } from '../../models/provincia-dto';
+import { DepartamentoDto } from '../../models/departamento-dto';
 
 @Component({
   selector: 'app-publicar-mascota',
@@ -20,15 +22,15 @@ export class PublicarMascotaComponent implements OnInit{
   publicarMascotaForm: FormGroup;
 
   // Esto será usado en el dropdown de ubicación
-  provincias: string[] = [];
-  municipios: string[] = [];
+  provincias: ProvinciaDto[] = [];
+  departamentos: DepartamentoDto[] = [];
   tocado: boolean = false;
 
 
   constructor(
     private mascotaService: MascotaService,
     private publicarMascotaFormService: PublicarMascotaFormService,
-    private ubicacionApiService: UbicacionApiService,
+    private ubicacionService: UbicacionService,
     private router: Router
   ){
     this.publicarMascotaForm = publicarMascotaFormService.createPublicarMascotaForm();
@@ -51,16 +53,17 @@ export class PublicarMascotaComponent implements OnInit{
   }
 
 
-// TO-DO cambiar los service de provincia y municipio (DEPARTAMENTO) por el nuevo service3
   cargarProvincias(): void{
-    this.ubicacionApiService.getProvincias().subscribe((data: string[]) =>{
+    this.ubicacionService.getProvincias().subscribe((data: ProvinciaDto[]) =>{
       this.provincias = data
     })
   }
 
   cargarMunicipios(provincia: string){
-    this.ubicacionApiService.getMunicipios(provincia).subscribe(data => this.municipios = data
-    )
+    // getDepartamentos returns all departamentos; filter by idProvincia
+    this.ubicacionService.getDepartamentos().subscribe(data => {
+      this.departamentos = (data || []).filter((d: any) => d.idProvincia === provincia || String(d.idProvincia) === String(provincia));
+    });
   }
 
   desabilitarSelectMunicipio(){
@@ -70,17 +73,17 @@ export class PublicarMascotaComponent implements OnInit{
       
       if (provinciaControl?.dirty && provinciaControl.value) {
         // Habilitar el campo de municipio si la provincia fue modificada y tiene un valor
-        this.publicarMascotaForm.get('municipio')?.enable();
+        this.publicarMascotaForm.get('departamento')?.enable();
         this.cargarMunicipios(provinciaControl.value);
         this.tocado = true;
       } else {
         // Deshabilitar el campo de municipio si no se ha seleccionado una provincia
-        this.publicarMascotaForm.get('municipio')?.disable();
+        this.publicarMascotaForm.get('departamento')?.disable();
       }
     });
 
     // Inicialmente deshabilitar el campo de municipio
-    this.publicarMascotaForm.get('municipio')?.disable();
+    this.publicarMascotaForm.get('departamento')?.disable();
   }
 
 }
