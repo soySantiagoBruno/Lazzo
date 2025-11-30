@@ -8,6 +8,8 @@ import { NgFor, NgIf } from '@angular/common';
 import { Auth, user } from '@angular/fire/auth';
 import { log } from 'console';
 import { UsuarioRegisterDto } from '../../models/usuario-register-dto';
+import { DepartamentoDto } from '../../models/departamento-dto';
+import { ProvinciaDto } from '../../models/provincia-dto';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -23,8 +25,9 @@ export class EditarPerfilComponent implements OnInit{
   formularioEditarUsuario: FormGroup;
 
    // Esto será usado en el dropdown de ubicación
-   provincias: string[] = [];
-   departamentos: string[] = [];
+  provincias: ProvinciaDto[] = [];
+  departamentos: DepartamentoDto[] = [];
+  departamentosFiltrados: any[] = []; 
 
   constructor(
     private editarUsuarioFormService: EditarUsuarioFormService,
@@ -83,14 +86,11 @@ export class EditarPerfilComponent implements OnInit{
 
 
   cargarProvincias(): void{
-    this.ubicacionApiService.getProvincias().subscribe((data: string[]) =>{
-      this.provincias = data
-    })
+    //lol
   }
 
   cargarDepartamentos(provincia: string){
-    this.ubicacionApiService.getDepartamentos(provincia).subscribe(data => this.departamentos = data
-    )
+    //lol
   }
 
 

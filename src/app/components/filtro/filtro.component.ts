@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { NgForOf } from '@angular/common';
+import { ProvinciaDto } from '../../models/provincia-dto';
+import { DepartamentoDto } from '../../models/departamento-dto';
 
 
 @Component({
@@ -15,8 +17,8 @@ export class FiltroComponent implements OnInit {
 
   formularioFiltro: FormGroup
 
-  provincias: any[] = [];
-  departamentos: any[] = [];
+  provincias: ProvinciaDto[] = [];
+  departamentos: DepartamentoDto[] = [];
   departamentosFiltrados: any[] = []; // <- lista filtrada por provincia
 
 
@@ -36,6 +38,8 @@ export class FiltroComponent implements OnInit {
 
 
   ngOnInit() {
+    //TO-DO esto se puede refactorizar en un solo método
+
     // Cargo provincias y departamentos
     this.ubicacionService.getProvincias().subscribe(p => this.provincias = p || []);
 
