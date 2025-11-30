@@ -1,3 +1,9 @@
+.navbar{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .container-sm {
     border-radius: 48px;
     background: var(--Black, #222);

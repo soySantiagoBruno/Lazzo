@@ -3,18 +3,16 @@
 <div class="contenedor-principal">
 
     <!--Inicio-->
-    <div class="container">
-        <h1>En <span style="color:#4B88A2">Lazzo</span> un amigo espera</h1>
-    
-        <h4>Aquí podrás publicar las mascotas que quieras dar en adopción</h4>
+    <div class="container bg-light-subtle">
+        <h4 class="mb-5">Aquí podrás publicar las mascotas que quieras dar en adopción</h4>
     </div>
     
     <!--Formulario-->
     <h3>Datos de la mascota</h3>
-    <h4 style="font-weight: bolder;text-align: left;" class="font-weight-bold">¿Qué deseas publicar?</h4>
+    <h4 style="font-weight: bolder;text-align: left;" class="mb-3 font-weight-bold">¿Qué deseas publicar?</h4>
 
 
-    <div class="filtro">
+    <div class="filtro col-md-7">
         <form [formGroup]="publicarMascotaForm" (ngSubmit)="registrarMascota()">
             <!--Tipo-->
             <div class="mb-3">
@@ -53,14 +51,14 @@
                         <input formControlName="sexo" value="macho"
                          class="form-check-input" type="radio" name="sexo" id="sexo">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            Macho <i class="material-icons">male</i>
+                            Macho <i class="bi bi-gender-male"></i>
                         </label>
                     </div>
                     <div class="form-check">
                         <input formControlName="sexo" value="hembra"
                          class="form-check-input" type="radio" name="sexo" id="sexo">
                         <label class="form-check-label" for="sexo">
-                            Hembra <i class="material-icons">female</i>
+                            Hembra <i class="bi bi-gender-female"></i>
                         </label>
                     </div>
                 </div>
@@ -143,8 +141,8 @@
             </div>
             
             <div class="boton-filtro d-flex">
-                <i class="material-icons">close</i>
-                <button class="boton-filtro">Volver</button>
+                <i class="bi bi-arrow-left-circle"></i>
+                <button class="boton-filtro p-3">Volver</button>
             </div>
         </form>
         </div>
