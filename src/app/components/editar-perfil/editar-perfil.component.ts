@@ -14,7 +14,7 @@ import { ProvinciaDto } from '../../models/provincia-dto';
 @Component({
   selector: 'app-editar-perfil',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgFor, RouterLink],
+  imports: [ReactiveFormsModule, NgFor, RouterLink],
   templateUrl: './editar-perfil.component.html',
   styleUrl: './editar-perfil.component.css'
 })

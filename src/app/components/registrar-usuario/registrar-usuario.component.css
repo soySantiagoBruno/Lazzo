@@ -17,8 +17,6 @@ img {
 
 h2 {
     color: var(--Black, #222);
-    leading-trim: both;
-    text-edge: cap;
 
     /* Hero/H2 */
     font-family: "Space Grotesk";
