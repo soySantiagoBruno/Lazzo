@@ -23,8 +23,8 @@ export class FiltroComponent implements OnInit {
 
 
   constructor(private ubicacionService: UbicacionService, private form: FormBuilder) {
-    
-      // Creo el formulario de filtro, departamento deshabilitado inicialmente
+
+    // Creo el formulario de filtro, departamento deshabilitado inicialmente
     this.formularioFiltro = this.form.group({
       provincia: [''],
       departamento: [{ value: '', disabled: true }], // <-- disabled hasta elegir provincia
@@ -38,19 +38,25 @@ export class FiltroComponent implements OnInit {
 
 
   ngOnInit() {
-    //TO-DO esto se puede refactorizar en un solo método
+    this.cargarProvincias();
+    this.cargarDepartamentos();
+    this.suscribirFiltroProvincia();
+  }
 
-    // Cargo provincias y departamentos
+
+  private cargarProvincias() {
     this.ubicacionService.getProvincias().subscribe(p => this.provincias = p || []);
+  }
 
+  private cargarDepartamentos() {
     this.ubicacionService.getDepartamentos().subscribe(d => {
       this.departamentos = d || [];
-      // si ya hay provincia seleccionada (ej. por rehidratación), aplica filtro
       const currentProv = this.formularioFiltro.get('provincia')?.value;
       this.applyProvinciaFilter(currentProv);
     });
+  }
 
-    // Suscribo el cambio de provincia para filtrar departamentos
+  private suscribirFiltroProvincia() {
     this.formularioFiltro.get('provincia')?.valueChanges.subscribe(provId => this.applyProvinciaFilter(provId));
   }
 
@@ -71,12 +77,14 @@ export class FiltroComponent implements OnInit {
   }
 
 
-aplicarFiltro() {
-  console.log("Filtro aplicado!", this.formularioFiltro.value);
-  /* const collapseEl = document.getElementById('collapseExample');
-  const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
-  collapse.hide(); */
-}
+  aplicarFiltro() {
+    // Esto debería aplicar el filtro y CERRAR el collapse
+
+    console.log("Filtro aplicado!", this.formularioFiltro.value);
+    /* const collapseEl = document.getElementById('collapseExample');
+    const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+    collapse.hide(); */
+  }
 
 
 }
